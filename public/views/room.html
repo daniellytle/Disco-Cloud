@@ -1,0 +1,48 @@
+<link type="text/css" rel="stylesheet" href="../styles/room.css"/>
+        <div class="total">
+<div class="title outer" ng-click="start()">
+
+    <div class="inner">
+        <div class="innerTitle">DiscoCloud</div>
+
+    </div>
+</div>
+<div class="roomWrap">
+
+    <div class="roomTitle">{{currentRoom.roomName}}</div>
+        <div class="userWrap">
+            <table>
+                <tr class="userRow" ng-repeat="user in currentRoom.users">
+                    <td>
+                        {{user.name}}
+                    </td>
+                    <td>
+                        {{user.title}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="searchHolder">
+            <div class="queryContain">
+                <input type="text" placeholder="Search Songs" class="searchQuery" ng-model="searchQuery" ng-change="search()"/>
+            </div>
+            <div class="table" resize="180">
+                <table>
+                    <tr ng-repeat="song in searchResults" ng-click="load(song.stream_url)" class="songRow">
+                        <td class="songCell" ng-click="lockIn(song)">
+                            <img class="songIMG" ng-src="{{song['artwork_url']}}" />
+                            <div class="songDesc">
+                                <div class="inner">
+                                    {{song.title}}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+        </div>
+
+
+

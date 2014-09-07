@@ -1,0 +1,56 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+<title>Users</title>
+
+<!-- SPELLS -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+<script src="core.js"></script>
+<link rel="stylesheet" type="text/css" href="../styles/entry.css" />
+
+<!-- SET THE CONTROLLER AND GET ALL TODOS -->
+<body>
+
+<div class="container">
+
+
+    <!-- HEADER AND TODO COUNT -->
+    <div class="total">
+
+
+    <!-- FORM TO CREATE TODOS -->
+
+            <form>
+                <div class="actionOuter">
+
+
+                <div class="actionContain">
+                    <div class="pageTitle">
+                        Disco<span style="color:#c93c11;">Cloud</span>
+                    </div>
+                    <div class="inputContain">
+                        <input type="text" class="textEnter" placeholder="RoomKey" ng-model="formData.roomKey">
+
+                    </div>
+
+                    <div class="inputContain">
+                        <input type="text" class="textEnter" placeholder="Your Name" ng-model="formData.Name">
+
+                    </div>
+
+                    <div class="half">
+                        <div type="submit" class="button" ng-click="joinRoom()">Join Room</div>
+
+                    </div>
+                    <div class="half">
+                        <div type="submit" class="button" ng-click="createRoom()">Create Room</div>
+                    </div>
+                    <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                </div>
+
+                <!-- createToDo() WILL CREATE NEW TODOS -->
+                </div>
+            </form>
+</div>
+</div>

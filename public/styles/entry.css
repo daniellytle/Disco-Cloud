@@ -1,0 +1,134 @@
+.container {
+    height:100vh;
+    width:100%;
+    background:url("http://c308991.r91.cf1.rackcdn.com/SiteFiles/Artists/3971/da77dd24-a1de-4b46-909f-df99807379cc.jpg") top no-repeat;
+}
+
+.pageTitle {
+    width: 100%;
+    text-align: center;
+    font-size: 163px;
+    font-weight: 300;
+    height:auto;
+
+    background-size: contain;
+}
+
+.inputContain {
+
+    margin:0 auto;
+    height:40px;
+    border: 2px solid white;
+    padding:10px 20px;
+    border-radius: 5px;
+    margin-bottom:10px;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+.inputContain:focus {
+    border-color:#e1e1e1;
+    background:white;
+    color: #808080;
+}
+
+form {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.textEnter {
+    width:100%;
+    height:100%;
+    background:transparent;
+    color:white;
+    font-size:26px;
+}
+
+.total {
+    height:100vh;
+    width:100%;
+    background: rgba(96, 59, 30, 0.38);
+    display: table;
+    color:white;
+}
+
+.button {
+    border: 2px solid white;
+    cursor: pointer;
+    text-align: center;
+    width:auto;
+    margin:0 20%;
+    padding: 14px;
+    font-size: 23px;
+    border-radius: 5px;
+    margin-top:10px;
+    -webkit-animation: fadeout .3s;
+
+}
+
+.button:hover {
+    -webkit-animation: fade .3s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fade {
+    from {}
+    to {background: rgba(225, 225, 225, 0.27);
+    color: #2b2b2b;}
+}
+
+@-webkit-keyframes fadeout {
+    from {background: rgba(225, 225, 225, 0.27);
+        color:#2b2b2b;}
+    to {background: none;
+        color:white;}
+}
+
+
+
+.actionOuter {
+    display:table;
+    width:50%;
+    margin:0 auto;
+}
+
+
+
+.half {
+    float:right;
+    width:50%;
+    margin-bottom: 132px;
+}
+
+.actionContain {
+    display:table-cell;
+    vertical-align: middle;
+}
+
+input {
+    border:none;
+}
+
+input:focus {
+    outline: none;
+
+}
+
+::-webkit-input-placeholder {
+    color: white;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: white;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: white;
+}
+
+:-ms-input-placeholder {
+    color: white;
+}

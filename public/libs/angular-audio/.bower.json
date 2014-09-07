@@ -1,0 +1,21 @@
+{
+  "name": "angular-audio",
+  "private": true,
+  "main": "app/angular.audio.js",
+  "dependencies": {
+    "bootstrap": "~3.2.0",
+    "angular": "~1.2.23",
+    "angular-ui-router": "~0.2.11"
+  },
+  "homepage": "https://github.com/danielstern/ngAudio",
+  "_release": "a66d5eadaf",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "a66d5eadaf8a6b4cebec04d97dcf9a3e8bf1c95f"
+  },
+  "_source": "git://github.com/danielstern/ngAudio.git",
+  "_target": "*",
+  "_originalSource": "angular-audio",
+  "_direct": true
+}

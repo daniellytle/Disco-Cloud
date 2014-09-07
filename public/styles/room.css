@@ -1,0 +1,136 @@
+body {
+    width:100%;
+    padding:0;
+    margin:0;
+    font-family: 'Oswald';
+}
+
+input {
+    border:none;
+    font-family: 'Oswald';
+    font-size:18px;
+}
+
+input:focus {
+    border:none;
+    outline:none;
+}
+
+table {
+    border-spacing: 0;
+}
+
+.button {
+    height: 50px; width:100px; background:green;
+    border-radius: 10px; margin-top:30px; cursor:pointer;
+    color:white;
+}
+
+.inner {
+    display:table-cell;
+    vertical-align: middle;
+
+}
+
+.outer {
+    display:table;
+}
+
+.title {
+    background: url("../img/play.png") center no-repeat;
+    background-size:contain;
+}
+
+.title:hover {
+    cursor:pointer;
+}
+
+.searchHolder {
+    position:absolute;
+    right:0px;
+    top:100px;
+    border-left: 2px solid #e1e1e1;
+    width:300px;
+    padding:10px;
+}
+
+.searchQuery {
+    width:100%;
+    height:100%;
+}
+
+.queryContain {
+    padding: 10px;
+    width:100%;
+    height:60px;
+    box-sizing: border-box;
+    border:2px solid #e1e1e1;
+    -webkit-box-shadow: 0 10px 8px -8px #b9b9b9;
+    background:white;
+}
+
+.table {
+    background:white;
+    overflow-y: scroll;
+    font-size:14px;
+}
+.songRow {
+    margin-top: 5px;
+    cursor:pointer;
+}
+
+.songRow:hover {
+    background: #f4f4f4;
+}
+
+.songCell {
+    width:100%;
+}
+
+.songDesc {
+    width:50%;
+    height: 60px;
+    float:left;
+    position: relative;
+    padding-left:10px;
+    display:table;
+}
+
+.begin {
+    height:30px;
+    width:100px;
+    border:2px solid red;
+}
+
+.total {
+    height:100vh;
+    width:100%;
+}
+
+.songIMG {
+    height:50px;
+    width:50px;
+    padding:5px 0;
+    position: relative;
+    float:left;
+}
+
+.roomTitle {
+    text-align: center;
+    font-size: 50px;
+    padding:10px;
+    border-bottom: 2px solid #ea7923;
+}
+
+.userRow {
+    height:70px;
+    font-size:30px;
+    padding:0 30px;
+    width:100%;
+}
+
+.roomWrap {
+    padding-right:322px;
+}
+
+/* angular ANIMATION */
