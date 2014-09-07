@@ -15,7 +15,7 @@ module.exports = function(app, io) {
     var mongoose        = require('mongoose');
 
 
-    mongoose.connect('mongodb://localhost/soundcrowd-dev');
+    mongoose.connect('mongodb://johnny:heistheman@ds035290.mongolab.com:35290/discoclouddb');
     var userData;
     var users = 2;
     io.sockets.on('connection', function (socket) {
