@@ -15,6 +15,7 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($scope ,$htt
         var now = new Date().getMilliseconds();
         var wait = 2000 - (now - time);
         setTimeout(function(){
+
             $scope.sound.play();
         }, wait);
     });
@@ -34,14 +35,6 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($scope ,$htt
 
     var iterate = function() {
         $scope.iter = (++$scope.iter) % $scope.currentRoom.users.length;
-    };
-
-    var checkForSongs = function() {
-        for(var i=0; i<$scope.currentRoom.users.length; ++i) {
-            if($scope.currentRoom.users[i].songURL != "")
-            return true;
-        }
-        return false;
     }
 
    var play = function(iteration, time) {
@@ -102,7 +95,7 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($scope ,$htt
         $scope.player.get('/tracks', { q: $scope.searchQuery, limit:20}, function(tracks) {
             $scope.$apply(function() {
                 $scope.searchResults = tracks;
-            })
+            });
 
             console.log(tracks);
         });
