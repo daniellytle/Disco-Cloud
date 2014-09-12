@@ -62,12 +62,11 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($scope ,$htt
     //  User Join ===========================================
 
     socket.on('joiner',function(data) {
-        alert(data)
 
-            if ($scope.sound){
-                $scope.sound.pause();
-            socket.emit('timeCheck', $scope.sound.currentTime);
-        }
+        $scope.message = data;
+        setTimeout(function() {
+            $scope.message = "";
+        }, 2000);
 
         Room.get(User.Room.roomName, function(room) {
             $scope.currentRoom = room[0];

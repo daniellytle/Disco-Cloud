@@ -1,9 +1,6 @@
 {
     "name": "starter-node-angular",
     "main": "server.js",
-    "scripts": {
-        "postinstall": "bower cache clean && bower install"
-    },
     "dependencies": {
         "express" : "~4.5.1",
         "mongoose" : "~3.8.0",

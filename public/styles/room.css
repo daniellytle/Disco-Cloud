@@ -36,6 +36,21 @@ table {
     display:table;
 }
 
+.bottomright {
+    width:auto;
+    height:70px;
+    border-top:4px solid #ff5619;
+    right:100px;
+    top:13px;
+    position: fixed;
+    background: #efefef;
+    z-index: 1000000;
+}
+
+.popup {
+    padding:20px;
+}
+
 .title {
     background: url("../img/play.png") center no-repeat;
     background-size:contain;
