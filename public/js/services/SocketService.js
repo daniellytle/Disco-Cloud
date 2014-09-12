@@ -2,7 +2,7 @@
  * Created by Daniel on 8/26/2014.
  */
 angular.module("SocketService", []).factory('socket', function($rootScope) {
-    var socket = io.connect("http://localhost:8080");
+    var socket = io.connect(window.location.hostname);
     return {
         on: function (eventName, callback) {
             socket.on(eventName, function () {
