@@ -1,12 +1,13 @@
 {
-    "name": "starter-node-angular",
-    "main": "server.js",
-    "dependencies": {
-        "express" : "~4.5.1",
-        "mongoose" : "~3.8.0",
-        "morgan"	 : "~1.2.2",
-        "body-parser" : "~1.4.2",
-        "method-override" : "~2.0.2",
-        "socket.io" : "1.x.x"
-    }
+  "name": "starter-node-angular",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "~1.4.2",
+    "express": "~4.5.1",
+    "method-override": "~2.0.2",
+    "mongoose": "~3.8.0",
+    "morgan": "~1.2.2",
+    "newrelic": "^1.11.1",
+    "socket.io": "1.x.x"
+  }
 }

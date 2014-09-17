@@ -16,9 +16,13 @@ module.exports = function(app, io) {
 
 
     mongoose.connect('mongodb://johnny:heistheman@ds035290.mongolab.com:35290/discoclouddb');
-    var userData;
-    var users = 2;
+
+    var userData = {};
+    var users = [];
     io.sockets.on('connection', function (socket) {
+
+        //Add user to array
+        users.push(socket);
 
             setInterval(function() {
                 var startTime = Date.now();
@@ -67,7 +71,16 @@ module.exports = function(app, io) {
 
             io.sockets
         });
-    });
+
+            socket.on('disconnect', function() {
+                console.log('Got disconnect!');
+                console.log(users);
+                socket.broadcast.to(userData.roomName).emit('leave', users);
+                var i = users.indexOf(socket);
+                delete users[i];
+            });
+        });
+
 
 
 
@@ -169,6 +182,33 @@ module.exports = function(app, io) {
                 res.send(err);
 
                 res.json(room);
+            });
+
+    });
+
+    // DELETE USER FROM ROOM ===============================================
+
+    app.delete('/api/room/:roomKey', function(req, res) {
+
+        var conditions = { roomName: req.body.roomData.roomName ,
+                'users._id' : req.body.userData._id}
+            , update = { $pull: {'users' : {_id:req.userData.id} }}
+            , options = {};
+
+        Room.update(conditions,update, options,
+            function(err, numAffected) {
+
+                // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+                if (err)
+                    res.send(err)
+
+                Room.find(conditions,function(err, room)
+                {
+                    if (err)
+                        res.send(err)
+                    res.json(room);
+                });
+                // return the room in JSON format
             });
 
     });

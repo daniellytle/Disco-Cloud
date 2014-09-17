@@ -73,8 +73,9 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($scope ,$htt
         });
     });
 
-    socket.on('leave', function() {
-        alert(User.Person.name + ' left!');
+    socket.on('leave', function(data) {
+        alert(data + ' left!');
+        console.log(data);
     })
 
         socket.on('reload',function() {
