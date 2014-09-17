@@ -24,10 +24,6 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($scope ,$htt
         socket.emit('start',data);
     });
 
-    socket.on('ping', function() {
-        socket.emit('pong');
-    })
-
     $scope.loadIt = function(iteration, time) {
         $scope.sound = ngAudio.load($scope.currentRoom.users[iteration].songURL + '?client_id=YOUR_CLIENT_ID');
         $scope.sound.start = time;

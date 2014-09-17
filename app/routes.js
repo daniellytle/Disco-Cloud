@@ -24,16 +24,6 @@ module.exports = function(app, io) {
         //Add user to array
         users.push(socket);
 
-            setInterval(function() {
-                var startTime = Date.now();
-                socket.emit('ping');
-                socket.on('pong', function() {
-                    var latency = Date.now() - startTime;
-                    console.log('latency - ' + latency);
-                });
-            }, 2000);
-
-
 
         // Joiner Person
         socket.on('joinGroup', function (data) {
