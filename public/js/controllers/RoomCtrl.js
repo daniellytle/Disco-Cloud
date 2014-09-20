@@ -13,11 +13,10 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($scope ,$htt
     socket.on('play', function(time) {
 
         var now = new Date().getMilliseconds();
-        var wait = 2000 - (now - time);
+        var wait = now - time;
         setTimeout(function(){
-
             $scope.sound.play();
-        }, wait);
+        },2000 - wait);
     });
 
     socket.on('load', function(data) {

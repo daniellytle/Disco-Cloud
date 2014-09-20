@@ -12,10 +12,15 @@ module.exports = function(app, io) {
 
     // Model
 
-    var mongoose        = require('mongoose');
+    var mongoose = require('mongoose');
 
 
     mongoose.connect('mongodb://johnny:heistheman@ds035290.mongolab.com:35290/discoclouddb');
+
+    users = [{
+        id: 0,
+        ready  :false
+    }]
 
     var userData = {};
     var users = [];
@@ -36,8 +41,8 @@ module.exports = function(app, io) {
         });
 
         socket.on('start', function(data) {
-            var then = new Date();
-            io.sockets.in(data).emit('play',then.getMilliseconds());
+            var then = new Date().getMilliseconds();
+            io.sockets.in(data).emit('play',then);
         })
 
         socket.on('LoadAll', function(data) {
