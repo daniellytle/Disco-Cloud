@@ -47,7 +47,7 @@ module.exports = function(app, io) {
 
         // Bring back pplayers current timer;
         socket.on('timeCheck', function(data) {
-            io.sockets
+            // IMPLEMENT
         });
 
         //  To reload everyones data
@@ -59,22 +59,12 @@ module.exports = function(app, io) {
 
             // Get Everybody and then push play;
 
-            io.sockets
         });
 
             socket.on('disconnect', function() {
-                console.log('Got disconnect!');
-                console.log(users);
-                socket.broadcast.to(userData.roomName).emit('leave', users);
-                var i = users.indexOf(socket);
-                delete users[i];
+                // TODO Implement
             });
         });
-
-
-
-
-
 
     // ROOM API CALLS ===========================================================
 

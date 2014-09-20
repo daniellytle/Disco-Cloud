@@ -11,7 +11,7 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($scope ,$htt
 
     // Play Music
     socket.on('play', function(time) {
-        $scope.loadIt(0,0);
+
         var now = new Date().getMilliseconds();
         var wait = 2000 - (now - time);
         setTimeout(function(){
@@ -28,6 +28,9 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($scope ,$htt
         $scope.sound = ngAudio.load($scope.currentRoom.users[iteration].songURL + '?client_id=YOUR_CLIENT_ID');
         $scope.sound.start = time;
     }
+
+    if($scope.currentRoom.users[0].songURL != "")
+        $scope.loadIt(0,0);
 
     var iterate = function() {
         $scope.iter = (++$scope.iter) % $scope.currentRoom.users.length;
@@ -115,6 +118,8 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($scope ,$htt
 
                 $scope.currentRoom = data[0];
                 $scope.formData = {};
+
+                $scope.loadIt(0,0);
 
                 console.log(data);
             })
