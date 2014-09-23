@@ -1,7 +1,7 @@
 /**
  * Created by Daniel on 8/22/2014.
  */
-angular.module('RoomCtrl',[]).controller('RoomController', function($scope ,$http, Room, User, socket,  ngAudio) {
+angular.module('RoomCtrl',[]).controller('RoomController', function($scope ,$http, Room, User, socket, notify, ngAudio) {
 
 
     // Sound Playing Device ===========================
@@ -62,6 +62,7 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($scope ,$htt
     socket.on('joiner',function(data) {
 
         $scope.message = data;
+        notify.run;
         setTimeout(function() {
             $scope.message = "";
         }, 2000);

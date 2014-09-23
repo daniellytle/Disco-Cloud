@@ -14,31 +14,40 @@ module.exports = function(app, io) {
 
     var mongoose = require('mongoose');
 
-
     mongoose.connect('mongodb://johnny:heistheman@ds035290.mongolab.com:35290/discoclouddb');
 
-    users = [{
+    var users = [{
         id: 0,
-        ready  :false
+        ready :false
     }]
 
     var userData = {};
-    var users = [];
+
     io.sockets.on('connection', function (socket) {
 
-        //Add user to array
-        users.push(socket);
+        // On Join ======================================
 
-
-        // Joiner Person
         socket.on('joinGroup', function (data) {
 
-           socket.join(data.roomName);
-           userData = data;
+            // Add user data
+            // TODO
+            // Join the socket room
+            socket.join(data.roomName);
 
-           socket.broadcast.to(data.roomName).emit('joiner',data.userName + " Joined the Party!");
+            // Keep single user data
+            userData = data;
+
+            socket.broadcast.to(data.roomName).emit('joiner',data.userName + " Joined the Party!");
 
         });
+
+        socket.on('end', function() {
+            
+        })
+
+        socket.on('loaded', function(id) {
+
+        })
 
         socket.on('start', function(data) {
             var then = new Date().getMilliseconds();
@@ -47,7 +56,6 @@ module.exports = function(app, io) {
 
         socket.on('LoadAll', function(data) {
             io.sockets.in(data).emit('load',data);
-
         })
 
         // Bring back pplayers current timer;
