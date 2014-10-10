@@ -1,7 +1,7 @@
 /**
  * Created by Daniel on 8/22/2014.
  */
-angular.module('NerdCtrl', []).controller('EntryController', function($scope, $http, $location, User) {
+angular.module('NerdCtrl', []).controller('EntryController', function($scope, $http, $location, User, socket) {
 
 
     $scope.formData = {};
@@ -10,20 +10,20 @@ angular.module('NerdCtrl', []).controller('EntryController', function($scope, $h
 
     $scope.createRoom = function() {
         var userInfo = $scope.formData;
-        $http.post('api/room', userInfo)
-            .success(function(data){
-                // clear the form so our user is ready to enter another
-                $scope.room = data;
-                $scope.formData = {};
-                $location.path('/soundroom/' + userInfo.roomKey);
-                User.Person = data[0].users[data[0].users.length - 1];
-                User.Room = data[0];
-                console.log(data);
-            })
-            .error(function(data) {
-                console.log('Error: ' + data);
-            });
-    }
+
+    };
+
+    $scope.results = [
+        {name:"CAHS"},
+        {name:"OOHHH"},
+        {name:"OJFLDKJ"},
+        {name:"ddH"},
+        {name:"sdafKJ"},
+        {name:"OOHHH"},
+        {name:"i86KJ"},
+        {name:"87HH"},
+        {name:"333LDKJ"}
+    ];
 
 
 

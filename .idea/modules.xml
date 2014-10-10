@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/DiscoCloud.iml" filepath="$PROJECT_DIR$/.idea/DiscoCloud.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/SPAProject.iml" filepath="$PROJECT_DIR$/.idea/SPAProject.iml" />
     </modules>
   </component>

@@ -12,16 +12,31 @@ module.exports = function(app, io) {
 
     // Model
 
-    var mongoose = require('mongoose');
+    var redis = require("redis");
+        var client = redis.createClient(
+            10373,"pub-redis-10373.us-east-1-3.3.ec2.garantiadata.com",
+            {no_ready_check: true}
+        );
+    client.auth("Mmpdrw123");
 
-    mongoose.connect('mongodb://johnny:heistheman@ds035290.mongolab.com:35290/discoclouddb');
 
-    var users = [{
-        id: 0,
-        ready :false
-    }]
+    client.on("error", function(err) {
+        console.log("error - " + err);
+    });
 
-    var userData = {};
+    client.set("string key", "string val", redis.print);
+    client.hset("hash key", "hashtest 1", "some value", redis.print);
+    client.hset(["hash key", "hashtest 2", "some other value"], redis.print);
+
+    var user = {
+        name:String,
+        songURL:String,
+        loaded:false
+    }
+
+    var Room = [];
+
+    var currentUser;
 
     io.sockets.on('connection', function (socket) {
 
@@ -29,9 +44,12 @@ module.exports = function(app, io) {
 
         socket.on('joinGroup', function (data) {
 
-            // Add user data
-            // TODO
-            // Join the socket room
+            currentUser = new user({
+
+
+
+            });
+
             socket.join(data.roomName);
 
             // Keep single user data
@@ -78,160 +96,6 @@ module.exports = function(app, io) {
                 // TODO Implement
             });
         });
-
-    // ROOM API CALLS ===========================================================
-
-    // Schema
-    var Schema = mongoose.Schema;
-
-    var ObjectID = Schema.ObjectId;
-
-    var userSchema = new Schema({
-        id      : ObjectID,
-        name    : String,
-        songURL : String,
-        title   : String,
-        locked  : String
-    });
-
-    var roomSchema = new Schema({
-        roomName : String,
-        users    : [userSchema]
-    });
-
-    var Room = mongoose.model('Room', roomSchema);
-    var User = mongoose.model('User', userSchema);
-
-    // JOIN EXISTING ROOM or UPDATE SONG
-
-    app.post('/api/room/:roomkey', function(req, res) {
-        var user = new User({
-            name : req.body.Name,
-            songURL : '',
-            title  : '',
-            locked : 'false'
-        });
-
-        var conditions = { roomName: req.params.roomkey }
-            , update = { $push: { users: user }}
-            , options = {};
-
-        Room.update(conditions,update, options,
-            function(err, numAffected) {
-
-            // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-            if (err)
-                res.send(err)
-
-                Room.find(conditions,function(err, room)
-                {
-                    if (err)
-                        res.send(err)
-                    res.json(room);
-                });
-             // return the room in JSON format
-        });
-    });
-
-        // CREATE NEW ROOM
-
-    app.post('/api/room', function(req, res) {
-
-        var user = new User({
-            name : req.body.Name,
-            songURL : '',
-            title: '',
-            locked : 'false'
-        });
-
-        new Room({
-            roomName : req.body.roomKey,
-            users : [ user ]
-        }).save(function(err, todo) {
-            if (err)
-                res.send(err);
-
-            // get and return all the todos after you create another
-            Room.find({
-                roomName : req.body.roomKey
-            },function(err, room)
-            {
-                if (err)
-                    res.send(err)
-                res.json(room);
-            });
-        });
-
-    });
-
-    // GET ALL USERS FROM ROOM =============================================
-
-    app.get('/api/room/:roomKey', function(req, res) {
-
-        Room.find({
-            roomName : req.params.roomKey
-        }, function(err, room) {
-            if (err)
-                res.send(err);
-
-                res.json(room);
-            });
-
-    });
-
-    // DELETE USER FROM ROOM ===============================================
-
-    app.delete('/api/room/:roomKey', function(req, res) {
-
-        var conditions = { roomName: req.body.roomData.roomName ,
-                'users._id' : req.body.userData._id}
-            , update = { $pull: {'users' : {_id:req.userData.id} }}
-            , options = {};
-
-        Room.update(conditions,update, options,
-            function(err, numAffected) {
-
-                // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-                if (err)
-                    res.send(err)
-
-                Room.find(conditions,function(err, room)
-                {
-                    if (err)
-                        res.send(err)
-                    res.json(room);
-                });
-                // return the room in JSON format
-            });
-
-    });
-
-
-    // Lock SONG FOR USER
-
-    app.post('/api/lock', function(req, res) {
-
-        var conditions = { roomName: req.body.roomData.roomName ,
-            'users._id' : req.body.userData._id}
-            , update = { $set: {'users.$.songURL' : req.body.url,'users.$.title': req.body.title }}
-            , options = {};
-
-        Room.update(conditions,update, options,
-            function(err, numAffected) {
-
-                // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-                if (err)
-                    res.send(err)
-
-                Room.find(conditions,function(err, room)
-                {
-                    if (err)
-                        res.send(err)
-                    res.json(room);
-                });
-                // return the room in JSON format
-            });
-    });
 
 
     // SOCKET IO ================================================================

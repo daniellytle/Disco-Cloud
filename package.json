@@ -8,6 +8,7 @@
     "mongoose": "~3.8.0",
     "morgan": "~1.2.2",
     "newrelic": "^1.11.1",
+    "redis": "^0.12.1",
     "socket.io": "1.x.x"
   }
 }
