@@ -14,6 +14,20 @@
     background-size: contain;
 }
 
+.betaWrap {
+    position: absolute;
+    right:0;
+    top:0;
+    height:50px;
+    width:100px;
+    background:green;
+}
+
+.betaInner {
+    display:inline;
+    margin:0 auto;
+}
+
 .inputContain {
     width: 550px;
     height:auto;
@@ -37,6 +51,16 @@
 .resultsWrap {
     height:350px;
     overflow-y: scroll;
+}
+
+.resultsRow {
+    cursor:pointer;
+    width:100%;
+    text-align: cetner;
+}
+
+.resultsRow:hover {
+    background:#e1e1e1;
 }
 
 form {

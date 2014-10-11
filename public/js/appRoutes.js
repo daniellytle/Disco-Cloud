@@ -10,7 +10,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         })
 
         //
-        .when('/soundroom/:name', {
+        .when('/:name', {
             templateUrl: 'views/room.html',
             controller: 'RoomController'
         });

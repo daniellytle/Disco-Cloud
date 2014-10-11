@@ -35,7 +35,7 @@ var http = require('http'),
     io = require("socket.io")(server);
 
 require('./app/routes')(app,io); // configure our routes
-require('./app/socket')(app);
+
 require('newrelic');
 // model ===================================================
 

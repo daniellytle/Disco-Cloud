@@ -2,6 +2,7 @@
  * Created by Daniel on 8/26/2014.
  */
 angular.module("SocketService", []).factory('socket', function($rootScope) {
+    // switch back to window.location.hostname
     var socket = io.connect(window.location.hostname);
     return {
         on: function (eventName, callback) {

@@ -11,7 +11,9 @@
 
 <!-- SET THE CONTROLLER AND GET ALL TODOS -->
 <body>
-
+<div class="betaWrap">
+<div class="betaInner">beta</div>
+</div>
 <div class="container">
 
 
@@ -31,7 +33,7 @@
                         <input type="text" style="border-bottom: 1px solid #dadada" class="textEnter" ng-model="query" placeholder="Search">
                         <div class="resultsWrap">
                             <table style="color:black">
-                                <tr ng-repeat="result in results | filter:query">
+                                <tr ng-repeat="result in results | filter:query" ng-click="enterRoom(result.name)" class="resultRow" >
                                     <td>
                                         {{result.name}}
                                     </td>

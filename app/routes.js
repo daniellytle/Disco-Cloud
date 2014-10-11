@@ -10,45 +10,62 @@ module.exports = function(app, io) {
     // handle things like api calls
     // authentication routes
 
-    // Model
+    // REDIS STUFF
 
-    var redis = require("redis");
-        var client = redis.createClient(
-            10373,"pub-redis-10373.us-east-1-3.3.ec2.garantiadata.com",
-            {no_ready_check: true}
-        );
-    client.auth("Mmpdrw123");
+//    var redis = require("redis");
+//        var client = redis.createClient(
+//
+//        );
+//    //client.auth();
+//
+//
+//    client.on("error", function(err) {
+//        console.log("error - " + err);
+//    });
+//
+//    client.set("string key", "string val", redis.print);
+//    client.hset("hash key", "hashtest 1", "some value", redis.print);
+//    client.hset(["hash key", "hashtest 2", "some other value"], redis.print);
 
-
-    client.on("error", function(err) {
-        console.log("error - " + err);
-    });
-
-    client.set("string key", "string val", redis.print);
-    client.hset("hash key", "hashtest 1", "some value", redis.print);
-    client.hset(["hash key", "hashtest 2", "some other value"], redis.print);
-
-    var user = {
-        name:String,
-        songURL:String,
-        loaded:false
-    }
-
-    var Room = [];
-
-    var currentUser;
+    // SAMPLE DATA
+    var data = [
+        {name:"MOUSE",
+            users:[
+                {
+                    name:"bob",
+                    songURL:"",
+                    title:"that one song",
+                    loaded:false
+                },
+                {
+                    name:"steve",
+                    songURL:"",
+                    title:"the other song",
+                    loaded:false
+                }
+            ]},
+        {name:"DONKEY",
+            users:[
+                {
+                    name:"bob",
+                    songURL:"",
+                    title:"that one song",
+                    loaded:false
+                },
+                {
+                    name:"steve",
+                    songURL:"",
+                    title:"the other song",
+                    loaded:false
+                }
+            ]}
+    ];
 
     io.sockets.on('connection', function (socket) {
 
         // On Join ======================================
 
         socket.on('joinGroup', function (data) {
-
-            currentUser = new user({
-
-
-
-            });
 
             socket.join(data.roomName);
 
@@ -60,7 +77,7 @@ module.exports = function(app, io) {
         });
 
         socket.on('end', function() {
-            
+
         })
 
         socket.on('loaded', function(id) {
@@ -92,12 +109,18 @@ module.exports = function(app, io) {
 
         });
 
-            socket.on('disconnect', function() {
-                // TODO Implement
-            });
+        socket.on('disconnect', function() {
+            // TODO Implement
         });
+    });
 
+    app.get('/api/room/:name', function(req, res) {
+        res.json(data);
+    });
 
+    app.get("/api/all", function(req, res) {
+        res.json(data);
+    });
     // SOCKET IO ================================================================
 
 // route to handle creating (app.post)
