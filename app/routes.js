@@ -6,73 +6,24 @@
 
 module.exports = function(app, io) {
 
-    // server routes ===========================================================
-    // handle things like api calls
-    // authentication routes
 
-    // REDIS STUFF
+    var data = {};
+    data["Mouse"] = {name:"Mouse",users:[{name:"bob"}]};
+    data["Owl"] = {name:"Owl",users:[{name:"steve"}]};
 
-//    var redis = require("redis");
-//        var client = redis.createClient(
-//
-//        );
-//    //client.auth();
-//
-//
-//    client.on("error", function(err) {
-//        console.log("error - " + err);
-//    });
-//
-//    client.set("string key", "string val", redis.print);
-//    client.hset("hash key", "hashtest 1", "some value", redis.print);
-//    client.hset(["hash key", "hashtest 2", "some other value"], redis.print);
-
-    // SAMPLE DATA
-    var data = [
-        {name:"MOUSE",
-            users:[
-                {
-                    name:"bob",
-                    songURL:"",
-                    title:"that one song",
-                    loaded:false
-                },
-                {
-                    name:"steve",
-                    songURL:"",
-                    title:"the other song",
-                    loaded:false
-                }
-            ]},
-        {name:"DONKEY",
-            users:[
-                {
-                    name:"bob",
-                    songURL:"",
-                    title:"that one song",
-                    loaded:false
-                },
-                {
-                    name:"steve",
-                    songURL:"",
-                    title:"the other song",
-                    loaded:false
-                }
-            ]}
-    ];
+    var socketList = [];
 
     io.sockets.on('connection', function (socket) {
 
-        // On Join ======================================
+        socketList.push(socket);
 
-        socket.on('joinGroup', function (data) {
+        socket.on('joinGroup', function (info) {
 
-            socket.join(data.roomName);
+            socket.join(info.roomName);
 
-            // Keep single user data
-            userData = data;
+            data[info.roomName].users.push({name:info.userName});
 
-            socket.broadcast.to(data.roomName).emit('joiner',data.userName + " Joined the Party!");
+            socket.broadcast.to(data.roomName).emit('change',data.userName + " Joined the Party!");
 
         });
 
@@ -110,12 +61,13 @@ module.exports = function(app, io) {
         });
 
         socket.on('disconnect', function() {
-            // TODO Implement
+            var i = socketList.indexOf(socket);
+            delete socketList[i];
         });
     });
 
     app.get('/api/room/:name', function(req, res) {
-        res.json(data);
+        res.json(data[req.params.name]);
     });
 
     app.get("/api/all", function(req, res) {

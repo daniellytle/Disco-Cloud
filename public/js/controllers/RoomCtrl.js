@@ -3,15 +3,15 @@
  */
 angular.module('RoomCtrl',[]).controller('RoomController', function($location, $scope ,$http, Room, User, socket, notify, ngAudio) {
 
+    $scope.roomName = $location.path().split("/")[1];
 
     $http.get("/api/room/" + $location.path().split("/")[1])
         .success(function(data) {
-            $scope.currentRoom = data[0];
+            $scope.currentRoom = data;
             console.log(data);
         })
         .error(function(err) {
             console.log(err);
-
         });
 
 
@@ -65,23 +65,26 @@ $scope.start = function() {
     //socket.emit('start',$scope.currentRoom.roomName);
 };
 
-socket.emit('joinGroup',{
-    roomName:User.Room.roomName,
-    userName:User.Person.name});
+socket.emit('joinGroup',{ roomName:$scope.roomName, userName: "someguy" });
 
 //  User Join ===========================================
 
-socket.on('joiner',function(data) {
-
+socket.on('change',function(data) {
+    console.log("caught Change " + data);
     $scope.message = data;
     notify.run;
     setTimeout(function() {
         $scope.message = "";
     }, 2000);
 
-    Room.get(User.Room.roomName, function(room) {
-        $scope.currentRoom = room[0];
-    });
+    http.get("/api/room/" + $location.path().split("/")[1])
+        .success(function(data) {
+            $scope.currentRoom = data;
+            console.log(data);
+        })
+        .error(function(err) {
+            console.log(err);
+        });
 });
 
 socket.on('leave', function(data) {
