@@ -65,7 +65,7 @@ $scope.start = function() {
     //socket.emit('start',$scope.currentRoom.roomName);
 };
 
-socket.emit('joinGroup',{ roomName:$scope.roomName, userName: "someguy" });
+socket.emit('joinGroup',{ roomName:$scope.roomName, userName:new Date().getMilliseconds()});
 
 //  User Join ===========================================
 
@@ -77,7 +77,7 @@ socket.on('change',function(data) {
         $scope.message = "";
     }, 2000);
 
-    http.get("/api/room/" + $location.path().split("/")[1])
+    $http.get("/api/room/" + $location.path().split("/")[1])
         .success(function(data) {
             $scope.currentRoom = data;
             console.log(data);
@@ -87,9 +87,16 @@ socket.on('change',function(data) {
         });
 });
 
-socket.on('leave', function(data) {
-    alert(data + ' left!');
-    console.log(data);
+socket.on('left', function(data) {
+    alert(data.userName + ' left!');
+    $http.get("/api/room/" + $location.path().split("/")[1])
+        .success(function(data) {
+            $scope.currentRoom = data;
+            console.log(data);
+        })
+        .error(function(err) {
+            console.log(err);
+        });
 })
 
 socket.on('reload',function() {
@@ -97,11 +104,6 @@ socket.on('reload',function() {
         $scope.currentRoom = data[0];
     });
 })
-
-$scope.users = User.Person;
-console.log($scope.currentRoom);
-
-$scope.currentUser = User.Person;
 
 
 

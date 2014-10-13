@@ -8,7 +8,7 @@ module.exports = function(app, io) {
 
 
     var data = {};
-    data["Mouse"] = {name:"Mouse",users:[{name:"bob"}]};
+    data["Mouse"] = {name:"Mouse",users:[]};
     data["Owl"] = {name:"Owl",users:[{name:"steve"}]};
 
     var socketList = [];
@@ -18,12 +18,17 @@ module.exports = function(app, io) {
         socketList.push(socket);
 
         socket.on('joinGroup', function (info) {
-
+            var i = socketList.indexOf(socket);
+            socketList[i].roomName = info.roomName;
+            socketList[i].userName = info.userName;
             socket.join(info.roomName);
 
-            data[info.roomName].users.push({name:info.userName});
+            data[info.roomName].users.push({
+                name:info.userName,
+                socketIndex: i
+                });
 
-            socket.broadcast.to(data.roomName).emit('change',data.userName + " Joined the Party!");
+            socket.broadcast.to(info.roomName).emit('change',info.userName + " Joined the Party!");
 
         });
 
@@ -62,15 +67,25 @@ module.exports = function(app, io) {
 
         socket.on('disconnect', function() {
             var i = socketList.indexOf(socket);
-            delete socketList[i];
+            var rmNm = socketList[i].roomName;
+            var usNm = socketList[i].userName;
+            var k = data[rmNm].users.indexOf(usNm);
+            console.log(rmNm + " " + usNm);
+
+            //Remove User Info
+            data[rmNm].users.splice(k,1);
+            socketList.splice(i,1);
+            io.sockets.in(rmNm).emit('left', {userName:usNm});
         });
     });
 
     app.get('/api/room/:name', function(req, res) {
+        console.log(data[req.params.name]);
         res.json(data[req.params.name]);
     });
 
     app.get("/api/all", function(req, res) {
+        console.log(data);
         res.json(data);
     });
     // SOCKET IO ================================================================
