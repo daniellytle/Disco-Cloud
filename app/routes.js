@@ -69,8 +69,7 @@ module.exports = function(app, io) {
 
         socket.on('disconnect', function() {
             var i = socketList.indexOf(socket);
-            socketList.splice(i, 1);
-            io.emit('new',socketList.length);
+
             var rmNm = socketList[i].roomName;
             if(rmNm) {
                 var usNm = socketList[i].userName;
@@ -89,6 +88,8 @@ module.exports = function(app, io) {
                     delete data[rmNm];
                 }
             }
+            socketList.splice(i, 1);
+            io.emit('new',socketList.length);
         });
     });
 
