@@ -99,14 +99,6 @@ socket.on('left', function(data) {
         });
 })
 
-socket.on('reload',function() {
-    Room.get(User.Room.roomName, function(data) {
-        $scope.currentRoom = data[0];
-    });
-})
-
-
-
 $scope.search = function() {
     $scope.player.get('/tracks', { q: $scope.searchQuery, limit:20}, function(tracks) {
         $scope.$apply(function() {
@@ -120,29 +112,6 @@ $scope.search = function() {
 $scope.emit = function (url) {
     $scope.sound = ngAudio.load(url);
     $scope.sound.play();
-}
-
-$scope.lockIn = function(data) {
-
-    socket.emit('loading', User.Room.roomName);
-    $http.post('api/lock/',{url: data.stream_url,
-        userData:$scope.currentUser,
-        roomData:$scope.currentRoom,
-        title:data.title
-    })
-        .success(function(data){
-            // clear the form so our user is ready to enter another
-
-            $scope.currentRoom = data[0];
-            $scope.formData = {};
-
-            $scope.loadIt(0,0);
-
-            console.log(data);
-        })
-        .error(function(data) {
-            console.log('Error: ' + data);
-        });
 }
 
 // SCRIPT LOADING ==========================================

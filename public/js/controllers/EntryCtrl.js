@@ -15,39 +15,29 @@ angular.module('EntryCtrl', []).controller('EntryController', function($scope, $
         });
 
     $scope.enterRoom = function(name) {
-
         $location.path("/" + name);
-
     };
 
-    // OLD JUNKKK ============================================
-
-    // when landing on the page, get all Users and show them
-
-    // when submitting the add form, send the text to the node API
-    $scope.createUser = function() {
-        $http.post('/api/room', $scope.formData)
+    $scope.createRoom = function(rmNm) {
+        $http.post("api/room/" + rmNm)
             .success(function(data) {
-                $scope.formData = {}; // clear the form so our user is ready to enter another
-                $scope.users = data;
                 console.log(data);
+                $scope.enterRoom(rmNm);
             })
-            .error(function(data) {
-                console.log('Error: ' + data);
-            });
+            .error(function(err) {
+                console.log(error);
+            })
     };
 
-    // delete a todo after checking it
-    $scope.deleteUser = function(id) {
-        $http.delete('/api/user/' + id)
+    socket.on('change', function() {
+        $http.get("/api/all")
             .success(function(data) {
-                $scope.users = data;
                 console.log(data);
+                $scope.results = data;
             })
-            .error(function(data) {
-                console.log('Error: ' + data);
+            .error(function(err) {
+                console.log(err)
             });
-    };
-
+    })
 
 });

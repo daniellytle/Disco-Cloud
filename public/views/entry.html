@@ -33,9 +33,14 @@
                         <input type="text" style="border-bottom: 1px solid #dadada" class="textEnter" ng-model="query" placeholder="Search">
                         <div class="resultsWrap">
                             <table style="color:black">
-                                <tr ng-repeat="result in results | filter:query" ng-click="enterRoom(result.name)" class="resultRow" >
+                                <tr ng-repeat="result in results | filter: query" ng-click="enterRoom(result.name)" class="resultRow" >
                                     <td>
                                         {{result.name}}
+                                    </td>
+                                </tr>
+                                <tr class="newRoom" ng-click="createRoom(query)">
+                                    <td>
+                                        Create New Room
                                     </td>
                                 </tr>
                             </table>

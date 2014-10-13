@@ -68,20 +68,39 @@ module.exports = function(app, io) {
         socket.on('disconnect', function() {
             var i = socketList.indexOf(socket);
             var rmNm = socketList[i].roomName;
-            var usNm = socketList[i].userName;
-            var k = data[rmNm].users.indexOf(usNm);
-            console.log(rmNm + " " + usNm);
+            if(rmNm) {
+                var usNm = socketList[i].userName;
+                var k = -1;
+                for (var i = 0; i < data[rmNm].users.length; ++i) {
+                    if (data[rmNm].users[i].name == usNm) k = i;
+                }
+                console.log(rmNm + " " + usNm);
 
-            //Remove User Info
-            data[rmNm].users.splice(k,1);
-            socketList.splice(i,1);
-            io.sockets.in(rmNm).emit('left', {userName:usNm});
+                //Remove User Info
+                if (k > 0) {
+                    data[rmNm].users.splice(k, 1);
+                    socketList.splice(i, 1);
+                    io.sockets.in(rmNm).emit('left', {userName: usNm});
+                }
+                else {
+                    delete data[rmNm];
+                }
+            }
         });
     });
 
     app.get('/api/room/:name', function(req, res) {
+
         console.log(data[req.params.name]);
+
+        if(data[req.params.name])
         res.json(data[req.params.name]);
+    });
+
+    app.post('/api/room/:name', function(req, res) {
+       data[req.params.name] = {name: req.params.name ,users:[]};
+       res.send();
+       io.emit('change', []);
     });
 
     app.get("/api/all", function(req, res) {
