@@ -17,6 +17,8 @@ module.exports = function(app, io) {
 
         socketList.push(socket);
 
+        io.emit('new',socketList.length);
+
         socket.on('joinGroup', function (info) {
             var i = socketList.indexOf(socket);
             socketList[i].roomName = info.roomName;
@@ -67,19 +69,20 @@ module.exports = function(app, io) {
 
         socket.on('disconnect', function() {
             var i = socketList.indexOf(socket);
+            socketList.splice(i, 1);
+            io.emit('new',socketList.length);
             var rmNm = socketList[i].roomName;
             if(rmNm) {
                 var usNm = socketList[i].userName;
+
                 var k = -1;
                 for (var i = 0; i < data[rmNm].users.length; ++i) {
                     if (data[rmNm].users[i].name == usNm) k = i;
                 }
-                console.log(rmNm + " " + usNm);
 
                 //Remove User Info
                 if (k > 0) {
                     data[rmNm].users.splice(k, 1);
-                    socketList.splice(i, 1);
                     io.sockets.in(rmNm).emit('left', {userName: usNm});
                 }
                 else {

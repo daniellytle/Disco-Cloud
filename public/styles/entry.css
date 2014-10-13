@@ -56,11 +56,19 @@
 .resultsRow {
     cursor:pointer;
     width:100%;
-    text-align: cetner;
+    text-align: center;
 }
 
 .resultsRow:hover {
     background:#e1e1e1;
+}
+
+.usercount {
+    position:absolute;
+    bottom:0;
+    right:0;
+    height:100px;
+    width:100px;
 }
 
 form {
@@ -81,7 +89,6 @@ form {
     width:100%;
     background: transparent;
     display: table;
-    color:white;
 }
 
 .button {
@@ -115,14 +122,10 @@ form {
         color:white;}
 }
 
-
-
 .actionOuter {
     display:table;
     margin:0 auto;
 }
-
-
 
 .half {
     float:right;
@@ -140,7 +143,6 @@ input {
 
 input:focus {
     outline: none;
-
 }
 
 ::-webkit-input-placeholder {

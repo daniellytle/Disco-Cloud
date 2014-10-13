@@ -38,6 +38,14 @@ angular.module('EntryCtrl', []).controller('EntryController', function($scope, $
             .error(function(err) {
                 console.log(err)
             });
+    });
+
+    socket.on('new', function(data) {
+        $scope.userCount = data;
     })
+
+
+
+
 
 });
