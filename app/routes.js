@@ -8,8 +8,6 @@ module.exports = function(app, io) {
 
 
     var data = {};
-    data["Mouse"] = {name:"Mouse",users:[]};
-    data["Owl"] = {name:"Owl",users:[{name:"steve"}]};
 
     var socketList = [];
 
@@ -86,6 +84,7 @@ module.exports = function(app, io) {
                 }
                 else {
                     delete data[rmNm];
+                    io.emit('change',{});
                 }
             }
             socketList.splice(i, 1);
