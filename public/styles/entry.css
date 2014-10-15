@@ -53,14 +53,14 @@
     overflow-y: scroll;
 }
 
-.resultsRow {
+.resultRow {
     cursor:pointer;
     width:100%;
-    text-align: center;
+    text-align: left;
 }
 
-.resultsRow:hover {
-    background:#e1e1e1;
+.resultRow:hover {
+    background: #f4f4f4;
 }
 
 .usercount {
