@@ -34,10 +34,10 @@
                         <div class="resultsWrap">
                             <table style="color:black; width:100%; border-collapse: collapse;">
                                 <tr ng-repeat="result in results | filter: query" ng-click="enterRoom(result.name)" class="resultRow" >
-                                    <td>
+                                    <td class="roomName">
                                         {{result.name}}
                                     </td>
-                                    <td style="float:right;">
+                                    <td class="roomName" style="float:right;">
                                         {{result.users.length}}
                                     </td>
                                 </tr>

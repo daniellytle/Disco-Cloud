@@ -63,6 +63,10 @@
     background: #f4f4f4;
 }
 
+.roomName {
+    padding:5px;
+}
+
 .usercount {
     position:absolute;
     bottom:0;
