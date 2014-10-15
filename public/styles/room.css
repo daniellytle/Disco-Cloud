@@ -84,6 +84,14 @@ table {
     background:white;
 }
 
+.userElt {
+    padding: 30px;
+}
+
+.userStatus {
+    padding: 30px;
+}
+
 .table {
     background:white;
     overflow-y: scroll;
