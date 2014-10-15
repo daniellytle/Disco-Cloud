@@ -63,6 +63,15 @@
     background: #f4f4f4;
 }
 
+.newRow {
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    background: rgb(49, 201, 49);
+    border-radius: 4px;
+    color: white;
+}
+
 .roomName {
     padding:5px;
 }
