@@ -28,8 +28,12 @@ module.exports = function(app, io) {
                 socketIndex: i
                 });
 
-            socket.broadcast.to(info.roomName).emit('change',info.userName + " Joined the Party!");
+            socket.broadcast.to(info.roomName).emit('roomChange',info.userName + " Joined the Party!");
 
+        });
+
+        socket.on('enter', function() {
+           io.emit('totalChange',{});
         });
 
         socket.on('end', function() {
@@ -84,7 +88,8 @@ module.exports = function(app, io) {
                 }
                 else {
                     delete data[rmNm];
-                    io.emit('change',{});
+                    io.emit('totalChange',{});
+
                 }
             }
             socketList.splice(i, 1);

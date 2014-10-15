@@ -1,20 +1,19 @@
 <link type="text/css" rel="stylesheet" href="../styles/room.css"/>
-        <div class="total">
-<div class="title outer" ng-click="start()">
+<div class="total">
+    <div class="title outer" ng-click="start()">
 
-    <div class="inner">
-        <div class="innerTitle">DiscoCloud</div>
+        <div class="inner">
+            <div class="innerTitle">DiscoCloud</div>
 
+        </div>
     </div>
-</div>
-            <div class="bottomright">
-                <div class="popup">
-                    {{message}}
-                </div>
-            </div>
-<div class="roomWrap">
+    <div class="bottomright">
+        <div class="popup">
+            {{message}}
+        </div>
+    </div>
+    <div class="roomWrap">
 
-    <div class="roomTitle">{{currentRoom.roomName}}</div>
         <div class="userWrap">
             <table>
                 <tr class="userRow" ng-repeat="user in currentRoom.users">
@@ -47,7 +46,7 @@
             </div>
         </div>
     </div>
-        </div>
+</div>
 
 
 

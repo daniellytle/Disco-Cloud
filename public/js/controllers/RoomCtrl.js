@@ -69,7 +69,7 @@ socket.emit('joinGroup',{ roomName:$scope.roomName, userName:new Date().getMilli
 
 //  User Join ===========================================
 
-socket.on('change',function(data) {
+socket.on('roomChange',function(data) {
     console.log("caught Change " + data);
     $scope.message = data;
     notify.run;

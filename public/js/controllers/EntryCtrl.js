@@ -16,6 +16,7 @@ angular.module('EntryCtrl', []).controller('EntryController', function($scope, $
 
     $scope.enterRoom = function(name) {
         $location.path("/" + name);
+        socket.emit('enter',{});
     };
 
     $scope.createRoom = function(rmNm) {
@@ -29,7 +30,7 @@ angular.module('EntryCtrl', []).controller('EntryController', function($scope, $
             })
     };
 
-    socket.on('change', function() {
+    socket.on('totalChange', function() {
         $http.get("/api/all")
             .success(function(data) {
                 console.log(data);
