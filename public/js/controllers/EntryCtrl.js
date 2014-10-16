@@ -43,7 +43,7 @@ angular.module('EntryCtrl', []).controller('EntryController', function($scope, $
 
     // ==== Socket Events ==== //
 
-    // room data change event
+    // room data change
     socket.on('totalChange', function() {
         $scope.loadRooms();
     });
