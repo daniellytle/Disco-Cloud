@@ -37,11 +37,11 @@
                                     <td class="roomName">
                                         {{result.name}}
                                     </td>
-                                    <td class="roomName" style="float:right;">
+                                    <td class="roomCount" style="float:right;">
                                         {{result.users.length}}
                                     </td>
                                 </tr>
-                                <tr class="resultRow" ng-click="createRoom(query)">
+                                <tr class="resultRow" ng-show="true" ng-click="createRoom(query)">
                                     <td class="newRow" colspan="2">
                                         Create New Room
                                     </td>
