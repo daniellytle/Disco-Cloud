@@ -2,7 +2,7 @@
  * Created by Daniel on 8/22/2014.
  *  - Handles the entry page of DiscoCloud
  */
-angular.module('EntryCtrl', []).controller('EntryController', function($scope, $http, $location, User, socket) {
+angular.module('EntryCtrl', []).controller('EntryController', function($scope, $http, $location, socket) {
 
     // ==== Entry Controller ==== //
     $scope.query   = "";
