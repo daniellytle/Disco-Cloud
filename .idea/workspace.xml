@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3c02372e-3674-414a-9773-d37c16fe08ef" name="Default" comment="Simple Test">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/entry.html" afterPath="$PROJECT_DIR$/public/views/entry.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/controllers/EntryCtrl.js" afterPath="$PROJECT_DIR$/public/js/controllers/EntryCtrl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newrelic_agent.log" afterPath="$PROJECT_DIR$/newrelic_agent.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="SPAProject.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,8 +51,8 @@
           <file leaf-file-name="entry.css" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/public/styles/entry.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.87904966" vertical-offset="341" max-vertical-offset="3077">
-                  <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
+                <state vertical-scroll-proportion="0.26017442" vertical-offset="1113" max-vertical-offset="3162">
+                  <caret line="76" column="15" selection-start-line="76" selection-start-column="15" selection-end-line="76" selection-end-column="15" />
                   <folding />
                 </state>
               </provider>
@@ -103,11 +102,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="EntryCtrl.js" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="EntryCtrl.js" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/public/js/controllers/EntryCtrl.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1105">
-                  <caret line="53" column="35" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+                <state vertical-scroll-proportion="0.19203414" vertical-offset="341" max-vertical-offset="1156">
+                  <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
                   <folding />
                 </state>
               </provider>
@@ -143,11 +142,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="entry.html" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="entry.html" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/public/views/entry.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.5377358" vertical-offset="418" max-vertical-offset="1156">
-                  <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
+                <state vertical-scroll-proportion="-9.423077" vertical-offset="418" max-vertical-offset="1156">
+                  <caret line="39" column="56" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
                   <folding />
                 </state>
               </provider>
@@ -203,9 +202,9 @@
         <option value="$PROJECT_DIR$/public/js/filters/filters.js" />
         <option value="$PROJECT_DIR$/public/js/app.js" />
         <option value="$PROJECT_DIR$/public/views/index.html" />
+        <option value="$PROJECT_DIR$/public/views/entry.html" />
         <option value="$PROJECT_DIR$/public/styles/entry.css" />
         <option value="$PROJECT_DIR$/public/js/controllers/EntryCtrl.js" />
-        <option value="$PROJECT_DIR$/public/views/entry.html" />
       </list>
     </option>
   </component>
@@ -546,8 +545,8 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12210797" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2795699" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34005377" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34005377" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293011" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -949,6 +948,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36480686" vertical-offset="0" max-vertical-offset="629">
           <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1046,14 +1046,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/styles/entry.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.87904966" vertical-offset="341" max-vertical-offset="3077">
-          <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/views/room.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.1538463" vertical-offset="265" max-vertical-offset="986">
@@ -1062,18 +1054,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/controllers/EntryCtrl.js">
+    <entry file="file://$PROJECT_DIR$/public/views/entry.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1105">
-          <caret line="53" column="35" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+        <state vertical-scroll-proportion="-9.423077" vertical-offset="418" max-vertical-offset="1156">
+          <caret line="39" column="56" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/entry.html">
+    <entry file="file://$PROJECT_DIR$/public/styles/entry.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5377358" vertical-offset="418" max-vertical-offset="1156">
-          <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.26017442" vertical-offset="1113" max-vertical-offset="3162">
+          <caret line="76" column="15" selection-start-line="76" selection-start-column="15" selection-end-line="76" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/controllers/EntryCtrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19203414" vertical-offset="341" max-vertical-offset="1156">
+          <caret line="28" column="40" selection-start-line="28" selection-start-column="40" selection-end-line="28" selection-end-column="40" />
           <folding />
         </state>
       </provider>
