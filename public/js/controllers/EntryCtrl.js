@@ -5,6 +5,8 @@ angular.module('EntryCtrl', []).controller('EntryController', function($scope, $
 
     /// ===============================================
 
+    $scope.query = "";
+
     $http.get("/api/all")
         .success(function(data) {
             console.log(data);
@@ -46,8 +48,13 @@ angular.module('EntryCtrl', []).controller('EntryController', function($scope, $
         $scope.userCount = data;
     })
 
+    // ==== Utility ==== //
 
-
-
+    $scope.search = function (item){
+        if (item.name.indexOf($scope.query)) {
+            return false;
+        }
+        return true;
+    };
 
 });

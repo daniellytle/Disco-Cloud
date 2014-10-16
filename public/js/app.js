@@ -12,5 +12,6 @@ angular.module('sampleApp', ['ngRoute',
                             'UserService',
                             'SocketService',
                             'ngAudio',
-                            'NotifyAnim'
+                            'NotifyAnim',
+                            'Filters'
                             ]);

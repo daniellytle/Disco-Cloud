@@ -14481,7 +14481,7 @@ function $WindowProvider(){
  * @name $filterProvider
  * @description
  *
- * Filters are just functions which transform input to an output. However filters need to be
+ * filters are just functions which transform input to an output. However filters need to be
  * Dependency Injected. To achieve this a filter definition consists of a factory function which is
  * annotated with dependencies and is responsible for creating a filter function.
  *
@@ -14523,7 +14523,7 @@ function $WindowProvider(){
  *
  *
  * For more information about how angular filters work, and how to create your own filters, see
- * {@link guide/filter Filters} in the Angular Developer Guide.
+ * {@link guide/filter filters} in the Angular Developer Guide.
  */
 /**
  * @ngdoc method
@@ -14541,7 +14541,7 @@ function $WindowProvider(){
  * @name $filter
  * @kind function
  * @description
- * Filters are used for formatting data displayed to the user.
+ * filters are used for formatting data displayed to the user.
  *
  * The general syntax in templates is as follows:
  *
@@ -20290,7 +20290,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', function($locale, $interp
  *     which can be used to associate the objects in the collection with the DOM elements. If no tracking function
  *     is specified the ng-repeat associates elements by identity in the collection. It is an error to have
  *     more than one tracking function to resolve to the same key. (This would mean that two distinct objects are
- *     mapped to the same DOM element, which is not possible.)  Filters should be applied to the expression,
+ *     mapped to the same DOM element, which is not possible.)  filters should be applied to the expression,
  *     before specifying a tracking expression.
  *
  *     For example: `item in items` is equivalent to `item in items track by $id(item)`. This implies that the DOM elements
