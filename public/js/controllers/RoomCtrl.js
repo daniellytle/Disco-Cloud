@@ -5,16 +5,6 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
 
     $scope.roomName = $location.path().split("/")[1];
 
-    $http.get("/api/room/" + $location.path().split("/")[1])
-        .success(function(data) {
-            $scope.currentRoom = data;
-            console.log(data);
-        })
-        .error(function(err) {
-            console.log(err);
-        });
-
-
 // TEMP LOAD
 $scope.load = function(url)
 {
@@ -66,6 +56,18 @@ $scope.start = function() {
 };
 
 socket.emit('joinGroup',{ roomName:$scope.roomName, userName:new Date().getMilliseconds()});
+
+    socket.on('joined', function() {
+        $http.get("/api/room/" + $location.path().split("/")[1])
+            .success(function(data) {
+                $scope.currentRoom = data;
+                console.log(data);
+            })
+            .error(function(err) {
+                console.log(err);
+            });
+        socket.emit('enter',{});
+    })
 
 //  User Join ===========================================
 

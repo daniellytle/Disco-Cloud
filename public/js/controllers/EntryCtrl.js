@@ -16,18 +16,19 @@ angular.module('EntryCtrl', []).controller('EntryController', function($scope, $
 
     $scope.enterRoom = function(name) {
         $location.path("/" + name);
-        socket.emit('enter',{});
     };
 
     $scope.createRoom = function(rmNm) {
-        $http.post("api/room/" + rmNm)
-            .success(function(data) {
-                console.log(data);
-                $scope.enterRoom(rmNm);
-            })
-            .error(function(err) {
-                console.log(error);
-            })
+        if(rmNm) {
+            $http.post("api/room/" + rmNm)
+                .success(function (data) {
+                    console.log(data);
+                    $scope.enterRoom(rmNm);
+                })
+                .error(function (err) {
+                    console.log(error);
+                })
+        }
     };
 
     socket.on('totalChange', function() {

@@ -28,6 +28,8 @@ module.exports = function(app, io) {
                 socketIndex: i
                 });
 
+            socket.emit('joined',{});
+
             socket.broadcast.to(info.roomName).emit('roomChange',info.userName + " Joined the Party!");
 
         });
@@ -82,9 +84,10 @@ module.exports = function(app, io) {
                 }
 
                 //Remove User Info
-                if (k > 0) {
+                if (data[rmNm].users.length > 1) {
                     data[rmNm].users.splice(k, 1);
                     io.sockets.in(rmNm).emit('left', {userName: usNm});
+                    io.emit('totalChange',{});
                 }
                 else {
                     delete data[rmNm];
