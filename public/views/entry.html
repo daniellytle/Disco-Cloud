@@ -30,7 +30,7 @@
                         Disco<span style="color:rgb(148, 148, 148);">Cloud</span>
                     </div>
                     <div class="inputContain" id="search">
-                        <input type="text" style="border-bottom: 1px solid #dadada" class="textEnter" ng-model="query" placeholder="Search">
+                        <input type="text" ng-placeholder="Search" style="border-bottom: 1px solid #dadada" class="textEnter" ng-model="query" placeholder="Search">
                         <div class="resultsWrap">
                             <table style="color:black; width:100%; border-collapse: collapse;">
                                 <tr ng-repeat="result in results |  array | filter: search" ng-click="enterRoom(result.name)" class="resultRow" >
