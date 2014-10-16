@@ -18,7 +18,9 @@ angular.module('EntryCtrl', []).controller('EntryController', function($scope, $
             .error(function(err) {
                 console.log(err);
             })
-    }();
+    };
+    // Init load
+    $scope.loadRooms();
 
     // enter an existing room
     $scope.enterRoom = function(name) {
