@@ -51,10 +51,10 @@ angular.module('EntryCtrl', []).controller('EntryController', function($scope, $
     // ==== Utility ==== //
 
     $scope.search = function (item){
-        if (item.name.indexOf($scope.query)) {
-            return false;
+        if (item.name.toLowerCase().indexOf($scope.query.toLowerCase()) > -1) {
+            return true;
         }
-        return true;
+        return false;
     };
 
 });
