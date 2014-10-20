@@ -8,7 +8,12 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
 // TEMP LOAD
     $scope.load = function(url)
     {
-        $scope.sound = ngAudio.load(url + '?client_id=YOUR_CLIENT_ID');
+        try {
+            $scope.sound = ngAudio.load(url + '?client_id=YOUR_CLIENT_ID');
+        } catch (exception) {
+            console.log(exception);
+            alert("didn't load");
+        }
     }
 
 // Play Music

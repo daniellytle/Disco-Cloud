@@ -18,14 +18,19 @@
     position: absolute;
     right:0;
     top:0;
-    height:50px;
-    width:100px;
-    background:green;
+    height:30px;
+    display: inline;
+    width:100%;
+    background: rgba(0, 131, 14, 0.62);
+    color:white;
+    text-align: left;
 }
 
+
 .betaInner {
-    display:inline;
-    margin:0 auto;
+    display:inline-block;
+    vertical-align: middle;
+    margin-left:10px;
 }
 
 .inputContain {
