@@ -69,12 +69,20 @@
 }
 
 .newRow {
-    width: 100%;
+    width: 200px;
+    margin:0 auto;
     text-align: center;
     padding: 5px;
-    background: rgb(49, 201, 49);
+    background: rgba(0, 131, 14, 0.62);
     border-radius: 4px;
     color: white;
+    border-bottom: 3px solid green;
+}
+
+.newRowOut {
+    cursor:pointer;
+    width:100%;
+    text-align: left;
 }
 
 .roomName {

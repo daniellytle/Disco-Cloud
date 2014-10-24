@@ -5,6 +5,8 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
 
     $scope.roomName = $location.path().split("/")[1];
 
+    $scope.playing = false;
+
 // TEMP LOAD
     $scope.load = function(url)
     {
@@ -54,8 +56,8 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
 
 
     $scope.start = function() {
-
-        $scope.sound.play();
+        $scope.playing = !$scope.playing;
+        $scope.playing ? $scope.sound.play() : $scope.sound.pause();
 
         //socket.emit('start',$scope.currentRoom.roomName);
     };
@@ -79,9 +81,9 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
     socket.on('roomChange',function(data) {
         console.log("caught Change " + data);
         $scope.message = data;
-        notify.run;
+
         setTimeout(function() {
-            $scope.message = "";
+            $scope.message = false;
         }, 2000);
 
         $http.get("/api/room/" + $location.path().split("/")[1])

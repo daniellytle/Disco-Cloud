@@ -41,21 +41,24 @@
                                         {{result.users.length}}
                                     </td>
                                 </tr>
-                                <tr class="resultRow" ng-show="query" ng-click="createRoom(query)">
-                                    <td class="newRow" colspan="2">
-                                        Create New Room
+                                <tr class="resultRow">
+                                    <td class="roomName" ng-click="createRoom(query)">
+                                        Create +
                                     </td>
                                 </tr>
                             </table>
                         </div>
                     </div>
-
+                    <!--<div class="newRowOut" ng-click="createRoom(query)">-->
+                        <!--<div class="newRow" colspan="2">-->
+                            <!--Create New Room-->
+                        <!--</div>-->
+                    <!--</div>-->
                     <div class="usercount">
                         Current Users {{userCount}}
                     </div>
                 </div>
 
-                <!-- createToDo() WILL CREATE NEW TODOS -->
             </div>
         </form>
     </div>
