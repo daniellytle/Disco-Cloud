@@ -13,5 +13,6 @@ angular.module('sampleApp', ['ngRoute',
                             'SocketService',
                             'ngAudio',
                             'NotifyAnim',
-                            'Filters'
+                            'Filters',
+                            'Anim'
                             ]);

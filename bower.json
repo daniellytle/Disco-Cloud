@@ -1,12 +1,15 @@
 {
-  "name": "starter-node-angular",
-  "version": "1.0.0",
-  "dependencies": {
-    "bootstrap": "latest",
-    "font-awesome": "latest",
-    "animate.css": "latest",
-    "angular": "latest",
-    "angular-route": "latest",
-    "angular-audio": "*"
-  }
+    "name": "starter-node-angular",
+    "version": "1.0.0",
+    "dependencies": {
+        "bootstrap": "latest",
+        "font-awesome": "latest",
+        "animate.css": "latest",
+        "angular": "latest",
+        "angular-route": "latest",
+        "angular-audio": "*",
+        "jquery": "~2.1.1",
+        "angular-animate": "~1.3.0"
+
+    }
 }

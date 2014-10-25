@@ -1,7 +1,7 @@
 /**
  * Created by Daniel on 8/22/2014.
  */
-angular.module('RoomCtrl',[]).controller('RoomController', function($location, $scope ,$http, Room, User, socket, notify, ngAudio) {
+angular.module('RoomCtrl',[]).controller('RoomController', function($location, $scope ,$http, Room, User, socket, notify, ngAudio, playAnim, notifyAnim) {
 
     $scope.roomName = $location.path().split("/")[1];
 
@@ -58,6 +58,8 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
     $scope.start = function() {
         $scope.playing = !$scope.playing;
         $scope.playing ? $scope.sound.play() : $scope.sound.pause();
+        playAnim.change();
+        playAnim.run();
 
         //socket.emit('start',$scope.currentRoom.roomName);
     };
@@ -81,10 +83,12 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
     socket.on('roomChange',function(data) {
         console.log("caught Change " + data);
         $scope.message = data;
+        notifyAnim.run();
+
 
         setTimeout(function() {
-            $scope.message = false;
-        }, 2000);
+            notifyAnim.out();
+        }, 3000);
 
         $http.get("/api/room/" + $location.path().split("/")[1])
             .success(function(data) {
@@ -97,7 +101,13 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
     });
 
     socket.on('left', function(data) {
-        alert(data.userName + ' left!');
+        $scope.message = data.userName + " left";
+        notifyAnim.run();
+
+
+        setTimeout(function() {
+            notifyAnim.out();
+        }, 3000);
         $http.get("/api/room/" + $location.path().split("/")[1])
             .success(function(data) {
                 $scope.currentRoom = data;
