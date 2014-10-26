@@ -13,6 +13,14 @@
             <div class="innerTitle">DiscoCloud</div>
 
         </div>
+        <div class="songInfo inner">
+            <div class="songTitle">
+                {{songInfo.title}}
+            </div>
+            <div class="songArtist">
+                {{songInfo.artist}}
+            </div>
+        </div>
     </div>
     <div class="bottomright">
         <div class="popup" ng-show="message">
@@ -39,7 +47,7 @@
             </div>
             <div class="table" resize="180">
                 <table>
-                    <tr ng-repeat="song in searchResults" ng-click="load(song.stream_url)" class="songRow">
+                    <tr ng-repeat="song in searchResults" ng-click="load(song)" class="songRow">
                         <td class="songCell" ng-click="lockIn(song)">
                             <img class="songIMG" ng-src="{{song['artwork_url']}}" />
                             <div class="songDesc">

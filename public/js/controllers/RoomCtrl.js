@@ -4,14 +4,15 @@
 angular.module('RoomCtrl',[]).controller('RoomController', function($location, $scope ,$http, Room, User, socket, notify, ngAudio, playAnim, notifyAnim) {
 
     $scope.roomName = $location.path().split("/")[1];
-
+    $scope.songInfo = null;
     $scope.playing = false;
 
 // TEMP LOAD
-    $scope.load = function(url)
+    $scope.load = function(song)
     {
         try {
-            $scope.sound = ngAudio.load(url + '?client_id=YOUR_CLIENT_ID');
+            $scope.sound = ngAudio.load(song.stream_url + '?client_id=YOUR_CLIENT_ID');
+            $scope.songInfo = song;
         } catch (exception) {
             console.log(exception);
             alert("didn't load");

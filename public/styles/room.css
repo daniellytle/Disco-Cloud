@@ -29,7 +29,6 @@ table {
 .inner {
     display:table-cell;
     vertical-align: middle;
-
 }
 
 .outer {
@@ -39,7 +38,7 @@ table {
 .bottomright {
     width:auto;
     height:70px;
-    border-top:4px solid #ff5619;
+    border-left:4px solid #ff5619;
     left:15px;
     bottom:0px;
     opacity: 0;
@@ -187,6 +186,22 @@ table {
 
 .roomWrap {
     padding-right:322px;
+}
+
+.songInfo {
+    margin:0 auto;
+    height:auto;
+    color:black;
+}
+
+.songTitle {
+    text-align: center;
+    font-size: 24px;
+}
+
+.songArtist {
+    text-align: center;
+    font-size: 15px;
 }
 
 /* angular ANIMATION */
