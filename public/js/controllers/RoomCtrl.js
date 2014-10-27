@@ -19,6 +19,8 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
         }
     }
 
+
+
 // Play Music
     socket.on('play', function(time) {
 
@@ -47,6 +49,7 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
             $scope.sound = ngAudio.load($scope.currentRoom.users[iteration].songURL + '?client_id=YOUR_CLIENT_ID');
             $scope.sound.play();
             $scope.check = true;
+
         }
         else {
             iterate();
@@ -64,6 +67,14 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
 
         //socket.emit('start',$scope.currentRoom.roomName);
     };
+
+    $scope.$watch(function() {
+        if($scope.playing && $scope.sound.progress == 1) {
+            $scope.playing = !$scope.playing;
+            playAnim.change();
+            playAnim.run();
+        }
+    });
 
     socket.emit('joinGroup',{ roomName:$scope.roomName, userName:new Date().getMilliseconds()});
 
@@ -89,7 +100,7 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
 
         setTimeout(function() {
             notifyAnim.out();
-        }, 3000);
+        }, 2000);
 
         $http.get("/api/room/" + $location.path().split("/")[1])
             .success(function(data) {
@@ -108,7 +119,7 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
 
         setTimeout(function() {
             notifyAnim.out();
-        }, 3000);
+        }, 2000);
         $http.get("/api/room/" + $location.path().split("/")[1])
             .success(function(data) {
                 $scope.currentRoom = data;
@@ -121,13 +132,23 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
 
     $scope.search = function() {
         $scope.player.get('/tracks', { q: $scope.searchQuery, limit:20}, function(tracks) {
-            $scope.$apply(function() {
+
                 $scope.searchResults = tracks;
+                console.log(tracks);
             });
 
-            console.log(tracks);
-        });
     }
+
+//    $scope.appendSongs = function(num) {
+//        $scope.player.get('/tracks', { q: $scope.searchQuery, limit:num}, function(tracks) {
+//            for(var i=10;i<0;--i) {
+//                $scope.results.push(tracks[num - i]);
+//            }
+//            console.log(tracks);
+//        });
+//    }
+//    $scope.searchResults = [];
+//    notifyAnim.init($scope.appendSongs($scope.searchResults.size + 10));
 
     $scope.emit = function (url) {
         $scope.sound = ngAudio.load(url);

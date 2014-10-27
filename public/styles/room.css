@@ -200,8 +200,16 @@ table {
 }
 
 .songArtist {
-    text-align: center;
-    font-size: 15px;
+    width:300px;
+    height:4px;
+    background:#e1e1e1;
+}
+
+.progress {
+    height:100%;
+
+    float:left;
+    background:orange;
 }
 
 /* angular ANIMATION */

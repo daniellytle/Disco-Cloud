@@ -45,21 +45,30 @@ angular.module('Anim',[]).factory('playAnim',function () {
             }
         }
     };
+
     return {run : begin,
         change : toggle};
 }).factory('notifyAnim',function() {
-
     var slideUp = function() {
-        $('.bottomright').animate({bottom:'15px',opacity:1},200);
+        $('.bottomright').animate({bottom:'15px',opacity:1},400);
     };
 
     var slideDown = function() {
-        $('.bottomright').animate({bottom:'0px',opacity:0},200);
+        $('.bottomright').animate({bottom:'0px',opacity:0},400);
     };
+
+    var scrolling = function(exec) {
+        $('.table').scroll(function () {
+            if ($('.table').scrollTop() + $('.table').height() == $('.songs').height()) {
+                exec();
+            }
+        });
+    }
 
     return {
         run : slideUp,
-        out : slideDown
+        out : slideDown,
+        init : scrolling
     }
 
 });

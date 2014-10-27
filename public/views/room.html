@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="inner">
-            <div class="innerTitle">DiscoCloud</div>
+            <div class="innerTitle">Disco<span style="color:rgb(148, 148, 148);">Cloud</span></div>
 
         </div>
         <div class="songInfo inner">
@@ -18,7 +18,9 @@
                 {{songInfo.title}}
             </div>
             <div class="songArtist">
-                {{songInfo.artist}}
+                <div class="progress" style="width: {{(sound.progress * 100) + '%'}}">
+
+                </div>
             </div>
         </div>
     </div>
@@ -46,7 +48,7 @@
                 <input type="text" placeholder="Search Songs" class="searchQuery" ng-model="searchQuery" ng-change="search()"/>
             </div>
             <div class="table" resize="180">
-                <table>
+                <table class="songs">
                     <tr ng-repeat="song in searchResults" ng-click="load(song)" class="songRow">
                         <td class="songCell" ng-click="lockIn(song)">
                             <img class="songIMG" ng-src="{{song['artwork_url']}}" />
