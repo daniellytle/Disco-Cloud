@@ -13,6 +13,8 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
         try {
             $scope.sound = ngAudio.load(song.stream_url + '?client_id=YOUR_CLIENT_ID');
             $scope.songInfo = song;
+            socket.emit('lock',song);
+
         } catch (exception) {
             console.log(exception);
             alert("didn't load");
@@ -76,8 +78,6 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
         }
     });
 
-    socket.emit('joinGroup',{ roomName:$scope.roomName, userName:new Date().getMilliseconds()});
-
     socket.on('joined', function() {
         $http.get("/api/room/" + $location.path().split("/")[1])
             .success(function(data) {
@@ -131,13 +131,26 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
     })
 
     $scope.search = function() {
+        socket.emit('searching',{})
         $scope.player.get('/tracks', { q: $scope.searchQuery, limit:20}, function(tracks) {
-
+            $scope.$apply(function() {
                 $scope.searchResults = tracks;
                 console.log(tracks);
-            });
+            })
 
+        });
     }
+
+    socket.on('change',function() {
+        $http.get("/api/room/" + $location.path().split("/")[1])
+            .success(function(data) {
+                $scope.currentRoom = data;
+                console.log(data);
+            })
+            .error(function(err) {
+                console.log(err);
+            });
+    });
 
 //    $scope.appendSongs = function(num) {
 //        $scope.player.get('/tracks', { q: $scope.searchQuery, limit:num}, function(tracks) {
@@ -184,6 +197,9 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
     };
 
     loadScript("http://connect.soundcloud.com/sdk.js", Initialize);
+
+    $scope.userName = prompt("Enter Your Name");
+    socket.emit('joinGroup',{ roomName:$scope.roomName, userName: $scope.userName});
 
 
 });

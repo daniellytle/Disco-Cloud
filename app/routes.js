@@ -25,12 +25,30 @@ module.exports = function(app, io) {
 
             data[info.roomName].users.push({
                 name:info.userName,
-                socketIndex: i
+                socketIndex: i,
+                songTitle:"",
+                songURL:null,
+                songLink:""
                 });
 
             socket.emit('joined',{});
 
             socket.broadcast.to(info.roomName).emit('roomChange',info.userName + " Joined the Party!");
+
+        });
+
+        socket.on('lock',function(song) {
+            var i = socketList.indexOf(socket);
+            var k =  data[socketList[i].roomName].users.map(function(x) {return x.name; }).indexOf(socketList[i].userName);
+            data[socketList[i].roomName].users[k].songTitle = song.title;
+
+            io.sockets.in(socketList[i].roomName).emit('change',{});
+        });
+
+
+        // USER ACTIONS EVENTS
+
+        socket.on('searching',function(data) {
 
         });
 

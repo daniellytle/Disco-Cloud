@@ -31,6 +31,12 @@ table {
     vertical-align: middle;
 }
 
+.innerTitle {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left:30px;
+}
+
 .outer {
     display:table;
 }
@@ -201,14 +207,15 @@ table {
 
 .songArtist {
     width:300px;
+    margin:0 auto;
     height:4px;
     background:#e1e1e1;
 }
 
 .progress {
     height:100%;
+    margin:0 auto;
 
-    float:left;
     background:orange;
 }
 
