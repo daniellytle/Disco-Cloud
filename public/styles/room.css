@@ -35,6 +35,7 @@ table {
     display: table-cell;
     vertical-align: middle;
     padding-left:30px;
+    color:white;
 }
 
 .outer {
@@ -58,7 +59,7 @@ table {
 }
 
 .title {
-    background: white;
+    background: #65AEFF;
     background-size:contain;
 }
 
@@ -70,7 +71,8 @@ table {
     position:absolute;
     right:0px;
     top:100px;
-    border-left: 2px solid #e1e1e1;
+    /*border-left: 2px solid #e1e1e1;*/
+    background: #EDEDED;
     width:300px;
     padding:10px;
 }
@@ -85,7 +87,7 @@ table {
     width:100%;
     height:60px;
     box-sizing: border-box;
-    border:2px solid #e1e1e1;
+    /*border:2px solid #e1e1e1;*/
     -webkit-box-shadow: 0 10px 8px -8px #b9b9b9;
     background:white;
 }
@@ -99,13 +101,15 @@ table {
 }
 
 .table {
-    background:white;
+    background:#EDEDED;
     overflow-y: scroll;
     font-size:14px;
+
 }
 .songRow {
     margin-top: 5px;
     cursor:pointer;
+    background: #EDEDED;
 }
 
 .songRow:hover {
@@ -148,7 +152,6 @@ table {
     text-align: center;
     font-size: 50px;
     padding:10px;
-    border-bottom: 2px solid #ea7923;
 }
 .Souter {
     width:80px;
@@ -161,7 +164,7 @@ table {
     float:right;
     position:absolute;
     bottom:0;
-    background: #ff5619
+    background: white;
 }
 #a {
     left:25%;
@@ -197,26 +200,25 @@ table {
 .songInfo {
     margin:0 auto;
     height:auto;
-    color:black;
+    color:white;
 }
 
 .songTitle {
     text-align: center;
     font-size: 24px;
+    margin-bottom: 8px;
 }
 
 .songArtist {
     width:300px;
     margin:0 auto;
     height:4px;
-    background:#e1e1e1;
+    background:#EDEDED;
 }
 
 .progress {
     height:100%;
-    margin:0 auto;
-
-    background:orange;
+    background:#CCCCCC;
 }
 
 /* angular ANIMATION */

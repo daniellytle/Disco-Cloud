@@ -10,16 +10,12 @@ var app             = express();
 var morgan          = require('morgan');
 var bodyParser      = require('body-parser');
 var methodOverride  = require('method-override');
-
 // configuration ========================
 
 // config files
 var db = require('./config/db');
 
 var port = process.env.PORT || 8080;
-// connect mongoose
-
-
 
 // get all data/stuff of the body
 app.use(bodyParser.json());
@@ -37,14 +33,14 @@ var http = require('http'),
 require('./app/routes')(app,io); // configure our routes
 
 require('newrelic');
+
+
 // model ===================================================
 
 
 server.listen(port);
 					// startup our app at http://localhost:8080
-console.log('Magic happens on port ' + port); 			// shoutout to the user
+console.log('Magic happens on port ' + port); 	// shoutout to the user
 exports = module.exports = app;
-
-
 
 // start app ===============================================

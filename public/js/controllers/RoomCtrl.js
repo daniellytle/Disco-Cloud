@@ -21,9 +21,7 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
         }
     }
 
-
-
-// Play Music
+    // Play Music
     socket.on('play', function(time) {
 
         var now = new Date().getMilliseconds();
@@ -60,14 +58,13 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
         }
     }
 
-
     $scope.start = function() {
         $scope.playing = !$scope.playing;
         $scope.playing ? $scope.sound.play() : $scope.sound.pause();
         playAnim.change();
         playAnim.run();
 
-        //socket.emit('start',$scope.currentRoom.roomName);
+        socket.emit('start',$scope.currentRoom.roomName);
     };
 
     $scope.$watch(function() {
