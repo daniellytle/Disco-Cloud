@@ -10,8 +10,7 @@ angular.module("DynamicSizing", []).directive('resize', function ($window) {
                var top = $('.table').scrollTop();
                var full = $window.innerHeight;
                $('.table').css({"height":(full - top - attrs.resize) + 'px'});
-
-
+               $('.chatWrap').css({"height":(full - 100) + 'px'});
             };
 
             // Call to the function when the page is first loaded

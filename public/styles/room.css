@@ -69,8 +69,8 @@ table {
 
 .searchHolder {
     position:absolute;
-    right:0px;
-    top:100px;
+    left:0px;
+    top:80px;
     /*border-left: 2px solid #e1e1e1;*/
     background: #EDEDED;
     width:300px;
@@ -90,6 +90,14 @@ table {
     /*border:2px solid #e1e1e1;*/
     -webkit-box-shadow: 0 10px 8px -8px #b9b9b9;
     background:white;
+}
+
+/* User Stuff */
+
+.userWrap {
+    position: absolute;
+    left:320px;
+
 }
 
 .userElt {
@@ -219,6 +227,16 @@ table {
 .progress {
     height:100%;
     background:#CCCCCC;
+}
+
+.chatWrap {
+    position: absolute;
+    width:300px;
+    padding:10px;
+    height:100%;
+    right:0;
+    background:#ededed;
+    top:80px;
 }
 
 /* angular ANIMATION */

@@ -9,7 +9,7 @@
                 <div class="Sinner" id="d"></div>
             </div>
         </div>
-        <div class="inner" style="position: absolute; height:100px; display: table;">
+        <div class="inner" style="position: absolute; height:80px; display: table;">
             <div class="innerTitle">Disco<span style="color:white;">Cloud</span></div>
 
         </div>
@@ -47,7 +47,7 @@
             <div class="queryContain">
                 <input type="text" placeholder="Search Songs" class="searchQuery" ng-model="searchQuery" ng-change="search()"/>
             </div>
-            <div class="table" resize="180">
+            <div class="table" resize="160">
                 <table class="songs">
                     <tr ng-repeat="song in searchResults" ng-click="load(song)" class="songRow">
                         <td class="songCell" ng-click="lockIn(song)">
@@ -61,6 +61,9 @@
                     </tr>
                 </table>
             </div>
+        </div>
+        <div class="chatWrap">
+
         </div>
     </div>
 </div>
