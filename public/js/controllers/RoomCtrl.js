@@ -6,7 +6,8 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
     $scope.roomName = $location.path().split("/")[1];
     $scope.songInfo = null;
     $scope.playing = false;
-
+    $scope.messages = [
+    { text:"Heythere" }, { text:"ohooyy" }];
 // TEMP LOAD
     $scope.load = function(song)
     {
@@ -60,18 +61,27 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
 
     $scope.start = function() {
         $scope.playing = !$scope.playing;
-        $scope.playing ? $scope.sound.play() : $scope.sound.pause();
-        playAnim.change();
-        playAnim.run();
 
+        if(!$scope.playing) {
+            $scope.sound.play();
+            playAnim.run();
+        } else {
+            $scope.sound.pause();
+            playAnim.stop();
+        } 
         socket.emit('start',$scope.currentRoom.roomName);
+    };
+
+    $scope.send = function() {
+        //alert("sending" + $scope.message);
+        socket.emit('message', { roomName:$scope.roomName, message:$scope.message } );
+        $scope.message = "";
     };
 
     $scope.$watch(function() {
         if($scope.playing && $scope.sound.progress == 1) {
             $scope.playing = !$scope.playing;
-            playAnim.change();
-            playAnim.run();
+            playAnim.stop();
         }
     });
 
@@ -85,6 +95,11 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
                 console.log(err);
             });
         socket.emit('enter',{});
+    })
+
+    socket.on('message', function(data) {
+        //alert("caught"+data);
+        $scope.messages.push({text:data});
     })
 
 //  User Join ===========================================

@@ -46,6 +46,13 @@ module.exports = function(app, io) {
         });
 
 
+        // MESSAGE EVENTS
+
+        socket.on('message', function(data) {
+            console.log(data);
+            io.sockets.in(data.roomName).emit("message", data.message);
+        })
+
         // USER ACTIONS EVENTS
 
         socket.on('searching',function(data) {

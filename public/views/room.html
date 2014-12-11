@@ -1,16 +1,9 @@
 <link type="text/css" rel="stylesheet" href="../styles/room.css"/>
 <div class="total">
     <div class="title outer" ng-click="start()">
-        <div class="animPlugin">
-            <div class="Souter">
-                <div class="Sinner" class="playAnim" id="a"></div>
-                <div class="Sinner" id="b"></div>
-                <div class="Sinner" id="c"></div>
-                <div class="Sinner" id="d"></div>
-            </div>
-        </div>
-        <div class="inner" style="position: absolute; height:80px; display: table;">
-            <div class="innerTitle">Disco<span style="color:white;">Cloud</span></div>
+        <img class="animPlugin" ng-src="../img/DiscoVinyl.png"/>
+        <div class="Logo" style="position: absolute; height:80px; display: table;">
+            
 
         </div>
         <div class="songInfo inner">
@@ -63,7 +56,20 @@
             </div>
         </div>
         <div class="chatWrap">
-
+            <div class="messageWrap">
+                <table class="messageTable">
+                    <tr ng-repeat="message in messages" class="message">
+                        <td class="messageIn">
+                            {{message.text}}
+                        </td>
+                    </tr>
+                </table>
+                <div class="messageText">
+                <form ng-submit="send()" style="height:100%;">
+                    <input type="text" placeholder="chat" class="messageBox" ng-model="message" />
+                </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>

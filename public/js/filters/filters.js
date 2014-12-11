@@ -9,4 +9,8 @@ angular.module('Filters', []).filter('array', function() {
         });
         return filtered;
     };
+}).filter('reverse', function() {
+  	return function(items) {
+    	return items.slice().reverse();
+  	};
 });

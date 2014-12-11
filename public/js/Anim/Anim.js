@@ -5,49 +5,18 @@ angular.module('Anim',[]).factory('playAnim',function () {
 
     console.log("loading animations");
 
-    var flag = false;
-
     var begin = function() {
-        move('#a', 250, true);
-        move('#b', 293, true);
-        move('#c', 271, true);
-        move('#d', 222, true);
+        $('.animPlugin').addClass("spin");
+        console.log("spinning");
     };
 
-    var toggle = function() { flag = !flag; }
-
-    var move = function (elt,
-                         interval, flip) {
-        if (flip)
-            $(elt).animate({
-                    height: '20%'
-                }, interval,
-
-                function () {
-                    flip = !flip;
-                    move(elt, interval - 20, flip);
-                });
-        else {
-            if (flag) {
-                $(elt).animate({
-                        height: '100%'
-                    }, interval,
-
-                    function () {
-                        flip = !flip;
-                        move(elt, interval + 20, flip);
-                    });
-            }
-            else {
-                $(elt).animate({
-                    height: '0px'
-                }, interval);
-            }
-        }
-    };
+    var close = function() {
+        $('.animPlugin').removeClass("spin");
+        console.log("stop spinning");
+    }
 
     return {run : begin,
-        change : toggle};
+        stop : close};
 }).factory('notifyAnim',function() {
     var slideUp = function() {
         $('.bottomright').animate({bottom:'15px',opacity:1},400);

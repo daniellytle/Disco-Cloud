@@ -35,7 +35,7 @@ table {
     display: table-cell;
     vertical-align: middle;
     padding-left:30px;
-    color:white;
+    width:100px;
 }
 
 .outer {
@@ -46,7 +46,7 @@ table {
     width:auto;
     height:70px;
     border-left:4px solid #ff5619;
-    left:15px;
+    left:340px;
     bottom:0px;
     opacity: 0;
     position: fixed;
@@ -59,7 +59,7 @@ table {
 }
 
 .title {
-    background: #65AEFF;
+    background: #FF5B05;
     background-size:contain;
 }
 
@@ -161,37 +161,34 @@ table {
     font-size: 50px;
     padding:10px;
 }
-.Souter {
-    width:80px;
-    height:60px;
-    margin:20px 0;
-}
-.Sinner {
-    width:25%;
-    height:0px;
-    float:right;
-    position:absolute;
-    bottom:0;
-    background: white;
-}
-#a {
-    left:25%;
-}
-#b {
-    left:50%;
-}
-#c {
-}
-#d {
-    left:75%;
-}
 
 .animPlugin {
+    background:transparent;
     height:60px;
-    width:auto;
+    width:60px;
     position:absolute;
     right:80px;
-    top:20px;
+    top:10px;
+    z-index: 1000;
+    -webkit-transition: 1s ease;
+    transition: 1s ease;
+}
+
+.spin {
+    -webkit-animation: spin 1s infinite linear;
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
 }
 
 .userRow {
@@ -238,5 +235,50 @@ table {
     background:#ededed;
     top:80px;
 }
+
+.messageWrap {
+    height:100%;
+    position: relative;
+}
+
+.messageTable {
+    position: absolute;
+    width:100%;
+    background: #ededed;
+    bottom:60px;
+    margin-bottom: 10px;
+}
+
+.message {
+    width:100%;
+}
+
+.messageIn {
+    display: inline-block;
+    padding:10px;
+    background:#FBFBFB;
+    border-bottom: 2px solid #D2D2D2;
+    margin-top: 5px;
+}
+
+.messageText {
+    position: absolute;
+    bottom:10px;
+    height:50px;
+    width:300px;
+}
+
+.messageBox {
+    width:100%;
+    height:100%;
+}
+
+.Logo {
+    height:100%;
+    width:180px;
+    margin-left:30px;
+    background:#3A3A3C;
+}
+
 
 /* angular ANIMATION */
