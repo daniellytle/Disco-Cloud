@@ -15,8 +15,18 @@ angular.module('Anim',[]).factory('playAnim',function () {
         console.log("stop spinning");
     }
 
+    var toggle = function() {
+        $('.messageWrap').addClass("out");
+    };
+
+    var toggleout = function() {
+        $('.messageWrap').removeClass("out");
+    };
+
     return {run : begin,
-        stop : close};
+        stop : close,
+        hide : toggle,
+        show : toggleout};
 }).factory('notifyAnim',function() {
     var slideUp = function() {
         $('.bottomright').animate({bottom:'15px',opacity:1},400);

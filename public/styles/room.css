@@ -242,7 +242,6 @@ table {
 
 .chatWrap {
     position: absolute;
-    width:300px;
     padding:10px;
     height:100%;
     right:0;
@@ -252,7 +251,10 @@ table {
 
 .messageWrap {
     height:100%;
+    width:300px;
     position: relative;
+    transition: .5s ease;
+    -webkit-transition: .5s ease;
 }
 
 .messageTable {
@@ -294,11 +296,27 @@ table {
     background:#3A3A3C;
 }
 
-.LogoInner {
+#LogoInner {
     width: 160px;
     height: 50px;
     margin: 15px auto 0 auto;
 }
 
+.toggler {
+    background: #e1e1e1;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    bottom: 10px;
+    left: -40px;
+    cursor:pointer;
+}
+
+.out {
+    width:0px;
+    height:0px;
+    padding:0;
+    display: none;
+}
 
 /* angular ANIMATION */

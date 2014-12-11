@@ -6,6 +6,7 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
     $scope.roomName = $location.path().split("/")[1];
     $scope.songInfo = null;
     $scope.playing = false;
+    $scope.ChatShow = false;
     $scope.messages = [
     { text:"Heythere" }, { text:"ohooyy" }];
 // TEMP LOAD
@@ -73,9 +74,15 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
     };
 
     $scope.send = function() {
-        //alert("sending" + $scope.message);
-        socket.emit('message', { roomName:$scope.roomName, message:$scope.message } );
-        $scope.message = "";
+        socket.emit('message', { roomName:$scope.roomName, message:$scope.chatmessage } );
+        $scope.chatmessage = "";
+    };
+
+    $scope.toggleChat = function() {
+        
+        $scope.ChatShow ? playAnim.hide() : playAnim.show();
+        $scope.ChatShow = !$scope.ChatShow;
+
     };
 
     $scope.$watch(function() {
@@ -98,7 +105,6 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
     })
 
     socket.on('message', function(data) {
-        //alert("caught"+data);
         $scope.messages.push({text:data});
     })
 
@@ -164,17 +170,6 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
             });
     });
 
-//    $scope.appendSongs = function(num) {
-//        $scope.player.get('/tracks', { q: $scope.searchQuery, limit:num}, function(tracks) {
-//            for(var i=10;i<0;--i) {
-//                $scope.results.push(tracks[num - i]);
-//            }
-//            console.log(tracks);
-//        });
-//    }
-//    $scope.searchResults = [];
-//    notifyAnim.init($scope.appendSongs($scope.searchResults.size + 10));
-
     $scope.emit = function (url) {
         $scope.sound = ngAudio.load(url);
         $scope.sound.play();
@@ -210,6 +205,7 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
 
     loadScript("http://connect.soundcloud.com/sdk.js", Initialize);
 
+    //Prompt UserName At Begin
     $scope.userName = prompt("Enter Your Name");
     socket.emit('joinGroup',{ roomName:$scope.roomName, userName: $scope.userName});
 

@@ -57,6 +57,7 @@
             </div>
         </div>
         <div class="chatWrap">
+            <div class="toggler" ng-click="toggleChat()"></div>
             <div class="messageWrap">
                 <table class="messageTable">
                     <tr ng-repeat="message in messages" class="message">
@@ -67,7 +68,7 @@
                 </table>
                 <div class="messageText">
                 <form ng-submit="send()" style="height:100%;">
-                    <input type="text" placeholder="chat" class="messageBox" ng-model="message" />
+                    <input type="text" placeholder="chat" class="messageBox" ng-model="chatmessage" />
                 </form>
                 </div>
             </div>
