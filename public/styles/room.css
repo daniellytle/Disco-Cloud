@@ -279,9 +279,10 @@ table {
 
 .messageText {
     position: absolute;
-    bottom:10px;
+    bottom:0px;
     height:50px;
     width:300px;
+    background: white;
 }
 
 .messageBox {

@@ -6,7 +6,7 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
     $scope.roomName = $location.path().split("/")[1];
     $scope.songInfo = null;
     $scope.playing = false;
-    $scope.ChatShow = false;
+    $scope.ChatShow = true;
     $scope.messages = [
     { text:"Heythere" }, { text:"ohooyy" }];
 // TEMP LOAD
