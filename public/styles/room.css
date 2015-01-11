@@ -63,10 +63,6 @@ table {
     background-size:contain;
 }
 
-.title:hover {
-    cursor:pointer;
-}
-
 .searchHolder {
     position:absolute;
     left:0px;
@@ -205,6 +201,27 @@ table {
     to {transform:rotate(360deg);}
 }
 
+#begin {
+    color:white;
+    display: inline-block;
+    width:auto;
+    padding:8px;
+    font-size: 20px;
+    background:green;
+    border-radius: 4px;
+    border-bottom: 4px solid gray;
+    cursor:pointer;
+}
+
+#djNum {
+    height:100%;
+    width:100px;
+    background:#777;
+    color:white;
+    font-size: 32px;
+    text-align: center;
+}
+
 .userRow {
     height:70px;
     font-size:30px;
@@ -217,9 +234,31 @@ table {
 }
 
 .songInfo {
+    display: inline-block;
     margin:0 auto;
     height:auto;
     color:white;
+    position: relative;
+}
+
+#upvote {
+    position: absolute;
+    left:110%;
+    color:black;
+    height:40px;
+    width:80px;
+    background:green;
+    border-radius: 4px;
+}
+
+#downvote {
+    position: absolute;
+    right:110%;
+    height:40px;
+    width:80px;
+    color:black;
+    background:red;
+    border-radius: 4px;
 }
 
 .songTitle {
@@ -304,7 +343,7 @@ table {
 }
 
 .toggler {
-    background: #e1e1e1;
+    border: 1px solid #e1e1e1;
     position: absolute;
     height: 30px;
     width: 30px;

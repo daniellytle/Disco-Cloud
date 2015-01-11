@@ -5,11 +5,18 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
 
     $scope.roomName = $location.path().split("/")[1];
     $scope.songInfo = null;
+    $scope.started = false;
     $scope.playing = false;
     $scope.ChatShow = true;
-    $scope.messages = [
-    { text:"Heythere" }, { text:"ohooyy" }];
-// TEMP LOAD
+
+    $scope.userName = User.name;
+    console.log(User);
+
+    // Begin the Disco
+    $scope.start = function() {
+        $scope.started = true;
+    }
+
     $scope.load = function(song)
     {
         try {
@@ -60,18 +67,18 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
         }
     }
 
-    $scope.start = function() {
-        $scope.playing = !$scope.playing;
+    // $scope.start = function() {
+    //     $scope.playing = !$scope.playing;
 
-        if(!$scope.playing) {
-            $scope.sound.play();
-            playAnim.run();
-        } else {
-            $scope.sound.pause();
-            playAnim.stop();
-        } 
-        socket.emit('start',$scope.currentRoom.roomName);
-    };
+    //     if(!$scope.playing) {
+    //         $scope.sound.play();
+    //         playAnim.run();
+    //     } else {
+    //         $scope.sound.pause();
+    //         playAnim.stop();
+    //     } 
+    //     socket.emit('start',$scope.currentRoom.roomName);
+    // };
 
     $scope.send = function() {
         socket.emit('message', { roomName:$scope.roomName, message:$scope.chatmessage } );
@@ -206,7 +213,7 @@ angular.module('RoomCtrl',[]).controller('RoomController', function($location, $
     loadScript("http://connect.soundcloud.com/sdk.js", Initialize);
 
     //Prompt UserName At Begin
-    $scope.userName = prompt("Enter Your Name");
+    //$scope.userName = prompt("Enter Your Name");
     socket.emit('joinGroup',{ roomName:$scope.roomName, userName: $scope.userName});
 
 

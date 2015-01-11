@@ -1,13 +1,16 @@
 <link type="text/css" rel="stylesheet" href="../styles/room.css"/>
 <div class="total">
-    <div class="title outer" ng-click="start()">
+    <div class="title outer">
         <img class="animPlugin" ng-src="../img/DiscoVinylGrey.png"/>
         <div class="Logo" style="position: absolute; height:80px; display: table;">
             <img id="LogoInner" ng-src="../img/DiscoCloudLogoLarge.png"/>
             
 
         </div>
-        <div class="songInfo inner">
+        <div id="begin" ng-click="start()" ng-show="!started">Start the Party!</div>
+        <div class="songInfo inner" ng-show="started">
+            <div id="upvote"></div>
+            <div id="downvote"></div>
             <div class="songTitle">
                 {{songInfo.title}}
             </div>
@@ -28,6 +31,11 @@
         <div class="userWrap">
             <table>
                 <tr class="userRow" ng-repeat="user in currentRoom.users">
+                    <td id="djNum">
+                        <div style="display:inline-block;">
+                            {{$index + 1}}
+                        </div>
+                    </td>
                     <td class="userElt">
                         {{user.name}}
                     </td>
@@ -67,7 +75,7 @@
                     </tr>
                 </table>
                 <div class="messageText">
-                <form ng-submit="send()" style="height:100%; margin:0 10px; background:white;">
+                <form ng-submit="send()" style="height:100%; margin:0 10px;">
                     <input type="text" placeholder="chat" class="messageBox" ng-model="chatmessage" />
                 </form>
                 </div>

@@ -2,7 +2,7 @@
  * Created by Daniel on 8/22/2014.
  *  - Handles the entry page of DiscoCloud
  */
-angular.module('EntryCtrl', []).controller('EntryController', function($scope, $http, $location, socket) {
+angular.module('EntryCtrl', []).controller('EntryController', function($scope, $http, $location, socket, User) {
 
     // ==== Entry Controller ==== //
     $scope.query   = "";
@@ -24,7 +24,13 @@ angular.module('EntryCtrl', []).controller('EntryController', function($scope, $
 
     // enter an existing room
     $scope.enterRoom = function(name) {
-        $location.path("/" + name);
+        if($scope.name == "" || !$scope.name)
+            alert("please enter your name");
+        else {
+            User.name = $scope.name;
+            $location.path("/" + name);
+        }
+
     };
 
     // create a new room and enter

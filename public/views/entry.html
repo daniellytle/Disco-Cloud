@@ -29,8 +29,8 @@
                     <div class="pageTitle">
                         Disco<span style="color:rgb(148, 148, 148);">Cloud</span>
                     </div>
-                    <div class="inputContain" id="search">
-                        <input type="text" ng-placeholder="Search" style="border-bottom: 1px solid #dadada" class="textEnter" ng-model="query" placeholder="Search">
+                    <div class="inputContain" style="width:550px;" id="search">
+                        <input type="text" style="border-bottom: 1px solid #dadada" class="textEnter" ng-model="query" placeholder="Search">
                         <div class="resultsWrap">
                             <table style="color:black; width:100%; border-collapse: collapse;">
                                 <tr ng-repeat="result in results |  array | filter: search" ng-click="enterRoom(result.name)" class="resultRow" >
@@ -49,11 +49,10 @@
                             </table>
                         </div>
                     </div>
-                    <!--<div class="newRowOut" ng-click="createRoom(query)">-->
-                        <!--<div class="newRow" colspan="2">-->
-                            <!--Create New Room-->
-                        <!--</div>-->
-                    <!--</div>-->
+                        <div class="inputContain">
+                            <input type="text" class="textEnter" ng-model="name" placeholder="Your Name">
+                        </div>
+
                     <div class="usercount">
                         {{userCount}}
                     </div>
